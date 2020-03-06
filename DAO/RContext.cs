@@ -15,7 +15,7 @@ namespace DAO
 
         }
 
-        public DbSet<EstoqueDTO> Estoques { get; set; }
+        public DbSet<EstoqueDTO> EstoqueProdutos { get; set; }
         public DbSet<IngredienteDTO> Ingredientes { get; set; }
         public DbSet<PedidoDTO> Pedidos { get; set; }
         public DbSet<UsuarioDTO> Usuarios { get; set; }
