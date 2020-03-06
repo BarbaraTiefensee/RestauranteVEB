@@ -9,6 +9,11 @@ namespace BLL.Impl
 {
     public class UsuarioService : IUsuarioService
     {
+        public UsuarioService()
+        {
+            
+        }
+
         public async Task Insert(UsuarioDTO usuario)
         {
             throw new NotImplementedException();
