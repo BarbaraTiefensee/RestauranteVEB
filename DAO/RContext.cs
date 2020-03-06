@@ -8,14 +8,14 @@ using System.Text;
 
 namespace DAO
 {
-    class RContext : DbContext
+    public class RContext : DbContext
     {
         public RContext() : base(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\900208\Documents\SSLocadora.mdf;Integrated Security=True;Connect Timeout=30")
         {
 
         }
 
-        public DbSet<EstoqueDTO> Estoques { get; set; }
+        public DbSet<EstoqueDTO> EstoqueProdutos { get; set; }
         public DbSet<IngredienteDTO> Ingredientes { get; set; }
         public DbSet<PedidoDTO> Pedidos { get; set; }
         public DbSet<UsuarioDTO> Usuarios { get; set; }
