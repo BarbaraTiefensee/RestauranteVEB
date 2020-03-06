@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DTO.Enums
 {
-    public enum Bebidas
+    public enum Bebida
     {
 
     }
