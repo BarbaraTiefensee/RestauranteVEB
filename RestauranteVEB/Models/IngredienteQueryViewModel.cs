@@ -10,6 +10,5 @@ namespace RestauranteVEB.Models
         public int ID { get; set; }
         public string Nome { get; set; }
         public int Quantidade { get; set; }
-
     }
 }
