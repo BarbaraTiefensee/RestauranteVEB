@@ -1,0 +1,178 @@
+﻿
+@{
+    ViewData["Title"] = "Cadastro";
+}
+
+<h1>Cadastrar Usuário</h1>
+
+<br />
+
+
+<body class="bg-dark">
+
+
+    <div class="form-group">
+        <div class="form-label-group">
+            <input type="text" id="Nome" name="Nome" class="form-control">
+            <span id="erroNome" name="erroNome" class="text-danger"></span><br />
+            <label for="Nome">Nome</label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="form-label-group">
+            <input type="text" id="CPF" name="CPF" class="form-control">
+            <span id="erroCPF" name="erroCPF" class="text-danger"></span><br />
+            <label for="CPF">CPF</label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="form-label-group">
+            <input type="text" id="Email" name="Email" class="form-control">
+            <span id="erroEmail" name="erroEmail" class="text-danger"></span><br />
+            <label for="Email">Email</label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="form-label-group">
+            <input type="password" id="Senha" name="Senha" class="form-control">
+            <span id="erroSenha" name="erroSenha" class="text-danger"></span><br />
+            <label for="Senha">Senha</label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="form-label-group">
+            <input type="password" id="Senha" name="Senha" class="form-control">
+            <span id="erroSenha" name="erroSenha" class="text-danger"></span><br />
+            <label for="Senha">Senha</label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="form-label-group">
+            <input type="password" id="RepetirSenha" name="RepetirSenha" class="form-control">
+            <span id="erroRepetirSenha" name="erroRepetirSenha" class="text-danger"></span><br />
+            <label for="RepetirSenha">Digite a senha novamente</label>
+        </div>
+    </div>
+
+    @{
+        string[] cor = Enum.GetNames(typeof(DTO.Enums.Permissao));
+    }
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Permissao</label>
+        <div class="col-md-10">
+            <select name="Permissao" id="Permissao" class="form-control">
+                @foreach (var item in ViewBag.Permissao)
+                {
+                    <option value="@item.Nome">@item.Nome</option>
+                }
+            </select>
+            <span id="erroPermissao" name="erroPermissao" class="text-danger"></span><br />
+        </div>
+    </div>
+
+    <div class="row">
+        @if (ViewBag.MensagemErro != null)
+        {
+            <div class="form-group">
+                <div class="col-md-10">
+                    <span class="text-danger">@ViewBag.MensagemErro</span>
+                </div>
+            </div>
+        }
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Cadastrar" class="btn btn-default" id="BotaoEnviar" name="BotaoEnviar" />
+                <input type="button" value="Limpar" class="btn btn-default" id="BotaoLimpar" name="BotaoLimpar" />
+            </div>
+        </div>
+    </div>
+
+</body>
+
+@section scripts{
+
+    <script type="text/javascript">
+
+        $("#BotaoEnviar").click(function (e) {
+
+            var sucesso = true;
+            var Nome = $("#Nome").val();
+            var CPF = $("#CPF").val();
+            var Email = $("#Email").val();
+            var Senha = $("#Senha").val();
+            var Permissao = $("#Permissao").val();
+
+            if (Nome == "") {
+                $("#erroNome").html("O nomeo deve ser informado.");
+                sucesso = false;
+            }
+            else {
+                if (Nome.length < 5 || Nome.length > 50) {
+                    $("#erroNome").html("O nome deve conter no mínimo 5 a 60 caracteres.");
+                    sucesso = false;
+                }
+                else {
+                    $("#erroNome").html("");
+                }
+            }
+
+            if (CPF == "") {
+                $("#erroCPF").html("O CPF deve ser informado.");
+                sucesso = false;
+            }
+            else {
+                if (CPF.length = !12) {
+                    $("#erroCPF").html("O CPF deve conter 12 caracteres.");
+                    sucesso = false;
+                }
+                else {
+                    $("#erroCPF").html("");
+                }
+            }
+
+            if (Email == "") {
+                $("#erroEmail").html("O Email deve ser informado.");
+                sucesso = false;
+            }
+            else {
+                $("#erroCPF").html("");
+            }
+            
+            if (Senha == "") {
+                $("#erroSenha").html("A senha deve ser informado.");
+                sucesso = false;
+            }
+            else {
+                if (SEnha.length < 5 || Nome.length > 15 ) {
+                    $("#erroSenha").html("A senha deve conter no mínimo 5 a 15 caracteres.");
+                    sucesso = false;
+                }
+                else {
+                    $("#erroCPF").html("");
+                }
+            }
+
+            if (!sucesso) {
+                e.preventDefault();
+            }
+        });
+
+        $("#BotaoLimpar").click(function () {
+            $("#Nome").val("");
+            $("#CPF").val("");
+            $("#Email").val("");
+            $("#Senha").val("");
+            $("#Profissao").val("");
+        });
+
+    </script>
+
+}
+

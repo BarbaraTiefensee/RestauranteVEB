@@ -16,6 +16,11 @@
     <ProjectReference Include="..\DTO\DTO.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\Estoque\" />
+    <Folder Include="Views\Pedido\" />
+  </ItemGroup>
+
 
 
 </Project>
