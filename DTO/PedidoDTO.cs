@@ -10,6 +10,6 @@ namespace DTO
         public int ID { get; set; }
         public double Preco { get; set; }
         public Refeicao Refeicao { get; set; }
-        public Bebidas Bebebida { get; set; }
+        public Bebida Bebebida { get; set; }
     }
 }
