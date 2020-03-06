@@ -8,7 +8,7 @@ using System.Text;
 
 namespace DAO
 {
-    class RContext : DbContext
+    public class RContext : DbContext
     {
         public RContext() : base(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\900208\Documents\SSLocadora.mdf;Integrated Security=True;Connect Timeout=30")
         {
