@@ -6,7 +6,7 @@ using System.Text;
 
 namespace DAO.Mappings
 {
-    class EnderecoMapConfig :ComplexTypeConfiguration<Endereco>
+    class EnderecoMapConfig : ComplexTypeConfiguration<Endereco>
     {
         public EnderecoMapConfig()
         {

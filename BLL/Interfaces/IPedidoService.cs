@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BLL.Interfaces
 {
-    interface IPedidoService
+    public interface IPedidoService
     {
         Task Insert(PedidoDTO pedido);
         Task<List<PedidoDTO>> GetData();

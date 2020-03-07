@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BLL.Interfaces
 {
-    interface IEstoqueService
+    public interface IEstoqueService
     {
         Task Insert(EstoqueDTO estoque);
         Task<List<EstoqueDTO>> GetData();

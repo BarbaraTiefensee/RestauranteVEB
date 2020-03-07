@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BLL.Impl;
+using BLL.Interfaces;
 using DAO;
 using IdentityServer3.Core.Services;
 using Microsoft.AspNetCore.Builder;
@@ -27,8 +29,9 @@ namespace RestauranteVEB
         public void ConfigureServices(IServiceCollection services)
         {
             //Adicionar os services para injeção de dependencia.............
-            services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IUsuarioService, UsuarioService>();
 
+            //Definindo a conection string.
             services.AddDbContextPool<RContext>(c => c.UseSqlServer(Configuration["A"]));
 
             services.AddControllersWithViews();

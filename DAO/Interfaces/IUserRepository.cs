@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAO.Interfaces
 {
-    interface IUserRepository
+    public interface IUsuarioRepository
     {
         Task Insert(UsuarioDTO usuario);
     }

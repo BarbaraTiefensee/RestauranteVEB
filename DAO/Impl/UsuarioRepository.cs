@@ -7,11 +7,18 @@ using System.Threading.Tasks;
 
 namespace DAO.Impl
 {
-    class UsuarioRepository : IUserRepository
+    class UsuarioRepository : IUsuarioRepository
     {
+        private RContext _context;
+        public UsuarioRepository(RContext context)
+        {
+            this._context = context;
+        }
+
         public async Task Insert(UsuarioDTO usuario)
         {
-            throw new NotImplementedException();
+            this._context.Usuarios.Add(usuario);
+            await this._context.SaveChangesAsync();
         }
     }
 }
