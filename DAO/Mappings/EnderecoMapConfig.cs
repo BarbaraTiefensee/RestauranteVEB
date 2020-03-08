@@ -15,7 +15,6 @@ namespace DAO.Mappings
             this.Property(e => e.Cidade).IsRequired().IsUnicode(false).HasMaxLength(50);
             this.Property(e => e.Cidade).IsRequired().IsUnicode(false).HasMaxLength(50);
             this.Property(e => e.Complemento).IsRequired().IsUnicode(false).HasMaxLength(100);
-
         }
     }
 }

@@ -32,8 +32,9 @@ namespace RestauranteVEB
             services.AddTransient<IUsuarioService, UsuarioService>();
 
             //Definindo a conection string.
-            services.AddDbContextPool<RContext>(c => c.UseSqlServer(Configuration["A"]));
+            services.AddDbContextPool<RContext>(c => c.UseSqlServer(Configuration["ConnectionString"]));
 
+            //Adicionando todas configurações.
             services.AddControllersWithViews();
         }
 
