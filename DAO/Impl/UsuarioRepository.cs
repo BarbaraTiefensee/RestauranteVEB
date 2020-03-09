@@ -15,6 +15,20 @@ namespace DAO.Impl
             this._context = context;
         }
 
+        public async Task<DataResponse<UsuarioDTO>> GetData()
+        {
+            DataResponse<UsuarioDTO> response = new DataResponse<UsuarioDTO>();
+
+            if (response.Erros.Count > 0)
+            {
+                response.Sucesso = false;
+                return response;
+            }
+
+            await this._context.SaveChangesAsync();
+            return response;
+        }
+
         public async Task<Response> Insert(UsuarioDTO usuario)
         {
             Response response = new Response();
@@ -28,6 +42,11 @@ namespace DAO.Impl
             this._context.Usuarios.Add(usuario);
             await this._context.SaveChangesAsync();
             return response;
+        }
+
+        public async Task<Response> Autententicar(string email, string password)
+        {
+            throw new NotImplementedException();
         }
     }
 }
