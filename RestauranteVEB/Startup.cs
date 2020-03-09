@@ -40,8 +40,7 @@ namespace RestauranteVEB
             services.AddTransient<IIngredienteRepository, IngredienteRepository>();
 
 
-            services.AddTransient<IEstoqueService, EstoqueService>();
-            services.AddTransient<IEstoqueRepository, EstoqueRepository>();
+           
 
             //Definindo a conection string.
             services.AddDbContextPool<RContext>(c => c.UseSqlServer(Configuration["ConnectionString"]));
