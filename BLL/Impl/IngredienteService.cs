@@ -16,6 +16,7 @@ namespace BLL.Impl
         public async Task<List<IngredienteDTO>> GetData()
         {
             throw new NotImplementedException();
+            
         }
     }
 }
