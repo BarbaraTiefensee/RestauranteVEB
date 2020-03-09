@@ -11,6 +11,7 @@ namespace DAO.Mappings
     {
         public void Configure(EntityTypeBuilder<UsuarioDTO> builder)
         {
+            
         }
     }
 }

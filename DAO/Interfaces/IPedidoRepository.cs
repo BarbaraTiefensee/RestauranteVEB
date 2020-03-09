@@ -4,11 +4,10 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BLL.Interfaces
+namespace DAO.Interfaces
 {
-    public interface IPedidoService
+    public interface IPedidoRepository
     {
         Task<Response> Insert(PedidoDTO pedido);
-        Task<DataResponse<PedidoDTO>> GetData();
     }
 }

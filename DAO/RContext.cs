@@ -22,7 +22,8 @@ namespace DAO
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-           //modelBuilder.Entity<string>().Property(s => s.IsNormalized()).IsRequired();
+            modelBuilder.Entity<string>().Property(s => s.IsNormalized()).IsRequired();
+
 
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 

@@ -8,7 +8,7 @@ namespace BLL.Interfaces
 {
     public interface IIngredienteService
     {
-        Task Insert(IngredienteDTO ingrediente);
-        Task<List<IngredienteDTO>> GetData();
+        Task<Response> Insert(IngredienteDTO ingrediente);
+        Task<DataResponse<IngredienteDTO>> GetData();
     }
 }
