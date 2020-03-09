@@ -30,15 +30,16 @@ namespace BLL.Impl
             return response;
         }
 
-        public async Task<List<UsuarioDTO>> GetData()
+        public async Task<DataResponse<UsuarioDTO>> GetData()
         {
-            await _usuarioRepository.GetData();
+            return await _usuarioRepository.GetData();
         }
 
-        public async Task<UsuarioDTO> Autententicar(string email, string password)
+        public Task<Response> Autententicar(string email, string password)
         {
             throw new NotImplementedException();
         }
+
         private Response Validate(UsuarioDTO item)
         {
             Response response = new Response();
