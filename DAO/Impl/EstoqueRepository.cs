@@ -1,5 +1,4 @@
-﻿using DAO.Interfaces;
-using DTO;
+﻿using DTO;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,17 +6,17 @@ using System.Threading.Tasks;
 
 namespace DAO.Impl
 {
-    public class IngredienteRepository : IIngredienteRepository
+    public class EstoqueRepository
     {
         private RContext _context;
-        public IngredienteRepository(RContext context)
+        public EstoqueRepository(RContext context)
         {
             this._context = context;
         }
 
-       
 
-        public async Task<Response> Insert(IngredienteDTO ingrediente)
+
+        public async Task<Response> Insert(EstoqueDTO estoque)
         {
             Response response = new Response();
 
@@ -27,7 +26,7 @@ namespace DAO.Impl
                 return response;
             }
 
-            this._context.Ingredientes.Add(ingrediente);
+            this._context.EstoqueProdutos.Add(estoque);
             await this._context.SaveChangesAsync();
             return response;
         }
