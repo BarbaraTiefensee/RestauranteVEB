@@ -8,7 +8,7 @@ namespace BLL.Interfaces
 {
     public interface IUsuarioService
     {
-        Task Insert(UsuarioDTO usuario);
+        Task<Response> Insert(UsuarioDTO usuario);
         Task<DataResponse<UsuarioDTO>> GetData();
         Task<DataResponse<UsuarioDTO>> Autententicar(string email, string password);
     }

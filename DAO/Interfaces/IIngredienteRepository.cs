@@ -9,5 +9,6 @@ namespace DAO.Interfaces
     public interface IIngredienteRepository
     {
         Task<Response> Insert(IngredienteDTO ingrediente);
+        Task<DataResponse<IngredienteDTO>> GetData();
     }
 }

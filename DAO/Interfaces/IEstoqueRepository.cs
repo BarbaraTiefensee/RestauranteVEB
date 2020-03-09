@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace DAO.Interfaces
 {
-    public interface IPedidoRepository
+    public interface IEstoqueRepository
     {
-        Task<Response> Insert(PedidoDTO pedido);
-        Task<DataResponse<PedidoDTO>> GetData();
+        Task<Response> Insert(EstoqueDTO estoque);
+        Task<DataResponse<EstoqueDTO>> GetData();
     }
 }

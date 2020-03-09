@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace DAO.Impl
 {
-    public class PedidoRepository : IPedidoRepository
+    public class IngredienteRepository : IIngredienteRepository
     {
         private RContext _context;
-        public PedidoRepository(RContext context)
+        public IngredienteRepository(RContext context)
         {
             this._context = context;
         }
 
-        public async Task<Response> Insert(PedidoDTO pedido)
+        public async Task<Response> Insert(IngredienteDTO ingrediente)
         {
             Response response = new Response();
 
@@ -25,7 +25,7 @@ namespace DAO.Impl
                 return response;
             }
 
-            this._context.Pedidos.Add(pedido);
+            this._context.Ingredientes.Add(ingrediente);
             await this._context.SaveChangesAsync();
             return response;
         }
