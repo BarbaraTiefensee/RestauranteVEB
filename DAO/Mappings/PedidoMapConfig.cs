@@ -1,18 +1,18 @@
 ﻿using DTO;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity.ModelConfiguration;
 using System.Text;
 
 namespace DAO.Mappings
 {
-    class PedidoMapConfig : EntityTypeConfiguration<PedidoDTO>
+    class PedidoMapConfig : IEntityTypeConfiguration<PedidoDTO>
     {
-        public PedidoMapConfig()
+        public void Configure(EntityTypeBuilder<PedidoDTO> builder)
         {
-            this.ToTable("PEDIDOS");
-
-            this.Property(p => p.Preco).HasColumnName("float").IsRequired();
+            builder.ToTable("PEDIDOS");
+            builder.Property(p => p.Preco).HasColumnName("float").IsRequired();
         }
     }
 }

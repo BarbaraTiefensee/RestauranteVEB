@@ -11,6 +11,13 @@ namespace DAO.Mappings
     {
         public void Configure(EntityTypeBuilder<UsuarioDTO> builder)
         {
+            builder.ToTable("USUARIOS");
+
+            builder.Property(c => c.Nome).HasMaxLength(50);
+            builder.Property(c => c.Email).IsRequired().HasMaxLength(60).IsUnicode(false);
+            builder.HasIndex(c => c.Email).IsUnique(true);
+            builder.Property(c => c.CPF).IsRequired().IsFixedLength().HasMaxLength(14).IsUnicode(false);
+            builder.HasIndex(c => c.CPF).IsUnique(true);
         }
     }
 }
