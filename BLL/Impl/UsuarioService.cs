@@ -29,9 +29,10 @@ namespace BLL.Impl
             await _usuarioRepository.Insert(usuario);
             return response;
         }
+
         public async Task<List<UsuarioDTO>> GetData()
         {
-            throw new NotImplementedException();
+            await _usuarioRepository.GetData();
         }
 
         public async Task<UsuarioDTO> Autententicar(string email, string password)
