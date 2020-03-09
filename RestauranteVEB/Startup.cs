@@ -29,7 +29,7 @@ namespace RestauranteVEB
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //Adicionar os services para injeção de dependencia.............
+            //Adicionar os services para injeção de dependencia
             services.AddTransient<IUsuarioService, UsuarioService>();
             services.AddTransient<IPedidoService, PedidoService>();
             services.AddTransient<IPedidoRepository, PedidoRepository>();
