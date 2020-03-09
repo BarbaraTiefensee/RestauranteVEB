@@ -28,13 +28,15 @@ namespace RestauranteVEB
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //Adicionar os services para injeção de dependencia.............
+            //Adicionar os services para injeÃ§Ã£o de dependencia.............
             services.AddTransient<IUsuarioService, UsuarioService>();
+            services.AddTransient<IUsuarioRepository, UsuarioRepository>();
+            
 
             //Definindo a conection string.
             services.AddDbContextPool<RContext>(c => c.UseSqlServer(Configuration["ConnectionString"]));
 
-            //Adicionando todas configurações.
+            //Adicionando todas configuraÃ§Ãµes.
             services.AddControllersWithViews();
         }
 
