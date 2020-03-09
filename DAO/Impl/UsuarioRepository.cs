@@ -45,9 +45,16 @@ namespace DAO.Impl
             return response;
         }
 
-        public async Task<Response> Autententicar(string email, string password)
+        public async Task<UsuarioDTO> Autententicar(string email, string password)
         {
-            throw new NotImplementedException();
+            UsuarioDTO usuario = await _context.Usuarios.FirstOrDefaultAsync(u => u.Email.Equals(email) && u.Senha.Equals(password)).ConfigureAwait(false);
+
+            if (usuario == null)
+            {
+                throw new Exception("Email e/ou senhas inválidos.");
+            }
+
+            return usuario;
         }
     }
 }
