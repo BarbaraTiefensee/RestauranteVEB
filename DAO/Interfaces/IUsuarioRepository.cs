@@ -9,7 +9,7 @@ namespace DAO.Interfaces
     public interface IUsuarioRepository
     {
         Task<Response> Insert(UsuarioDTO usuario);
-        Task<List<UsuarioDTO>> GetData();
-        Task<UsuarioDTO> Autententicar(string email, string password);
+        Task<DataResponse<UsuarioDTO>> GetData();
+        Task<Response> Autententicar(string email, string password);
     }
 }
