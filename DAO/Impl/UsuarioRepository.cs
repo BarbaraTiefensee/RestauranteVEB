@@ -15,10 +15,19 @@ namespace DAO.Impl
             this._context = context;
         }
 
-        public async Task Insert(UsuarioDTO usuario)
+        public async Task<Response> Insert(UsuarioDTO usuario)
         {
+            Response response = new Response();
+
+            if (response.Erros.Count > 0)
+            {
+                response.Sucesso = false;
+                return response;
+            }
+
             this._context.Usuarios.Add(usuario);
             await this._context.SaveChangesAsync();
+            return response;
         }
     }
 }
