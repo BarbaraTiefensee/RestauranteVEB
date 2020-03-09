@@ -10,6 +10,6 @@ namespace BLL.Interfaces
     {
         Task<Response> Insert(UsuarioDTO usuario);
         Task<DataResponse<UsuarioDTO>> GetData();
-        Task<DataResponse<UsuarioDTO>> Autententicar(string email, string password);
+        Task<Response> Autententicar(string email, string password);
     }
 }
