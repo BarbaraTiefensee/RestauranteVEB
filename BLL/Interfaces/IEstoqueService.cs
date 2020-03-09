@@ -8,7 +8,7 @@ namespace BLL.Interfaces
 {
     public interface IEstoqueService
     {
-        Task Insert(EstoqueDTO estoque);
-        Task<List<EstoqueDTO>> GetData();
+        Task<Response> Insert(EstoqueDTO estoque);
+        Task<DataResponse<EstoqueDTO>> GetData();
     }
 }

@@ -33,7 +33,11 @@ namespace RestauranteVEB
             //Adicionar os services para injeção de dependencia.............
             services.AddTransient<IUsuarioService, UsuarioService>();
             services.AddTransient<IUsuarioRepository, UsuarioRepository>();
-            
+            services.AddTransient<IPedidoService, PedidoService>();
+            services.AddTransient<IPedidoRepository, PedidoRepository>();
+
+
+
             //Definindo a conection string.
             services.AddDbContextPool<RContext>(c => c.UseSqlServer(Configuration["ConnectionString"]));
 

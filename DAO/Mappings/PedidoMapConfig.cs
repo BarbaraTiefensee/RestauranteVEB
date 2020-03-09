@@ -12,7 +12,6 @@ namespace DAO.Mappings
         public void Configure(EntityTypeBuilder<PedidoDTO> builder)
         {
             builder.ToTable("PEDIDOS");
-
             builder.Property(p => p.Preco).HasColumnName("float").IsRequired();
         }
     }
