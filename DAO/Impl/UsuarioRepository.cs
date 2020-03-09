@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DAO.Impl
 {
-    class UsuarioRepository : IUsuarioRepository
+    public class UsuarioRepository : IUsuarioRepository
     {
         private RContext _context;
         public UsuarioRepository(RContext context)
