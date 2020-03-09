@@ -2,9 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BLL.Impl;
+using BLL.Interfaces;
+using DAO;
+using IdentityServer3.Core.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -23,6 +28,15 @@ namespace RestauranteVEB
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //Adicionar os services para injeção de dependencia.............
+            services.AddTransient<IUsuarioService, UsuarioService>();
+            services.AddTransient<IUsuarioRepository, UsuarioRepository>();
+            
+
+            //Definindo a conection string.
+            services.AddDbContextPool<RContext>(c => c.UseSqlServer(Configuration["ConnectionString"]));
+
+            //Adicionando todas configurações.
             services.AddControllersWithViews();
         }
 

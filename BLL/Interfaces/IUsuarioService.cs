@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BLL.Interfaces
 {
-    interface IUsuarioService
+    public interface IUsuarioService
     {
         Task Insert(UsuarioDTO usuario);
         Task<List<UsuarioDTO>> GetData();

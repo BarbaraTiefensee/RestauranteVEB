@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BLL.Interfaces
 {
-    interface IIngredienteService
+    public interface IIngredienteService
     {
         Task Insert(IngredienteDTO ingrediente);
         Task<List<IngredienteDTO>> GetData();

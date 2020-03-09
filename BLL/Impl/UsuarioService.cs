@@ -1,4 +1,5 @@
 ﻿using BLL.Interfaces;
+using DAO.Interfaces;
 using DTO;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,12 @@ namespace BLL.Impl
 {
     public class UsuarioService : IUsuarioService
     {
+        private IUsuarioRepository _usuarioRepository;
+        public UsuarioService(IUsuarioRepository usuarioRepository)
+        {
+            this._usuarioRepository = usuarioRepository;
+        }
+
         public async Task Insert(UsuarioDTO usuario)
         {
             throw new NotImplementedException();
