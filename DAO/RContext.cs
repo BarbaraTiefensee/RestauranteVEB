@@ -22,8 +22,7 @@ namespace DAO
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<string>().Property(s => s.IsNormalized()).IsRequired();
-
+            modelBuilder.Entity<string>().Property(s => s.IsNormalized()).IsRequired().IsUnicode(false).HasColumnType("varchar");
 
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 

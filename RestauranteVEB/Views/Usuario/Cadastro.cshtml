@@ -99,6 +99,7 @@
             var CPF = $("#CPF").val();
             var Email = $("#Email").val();
             var Senha = $("#Senha").val();
+            var RepetirSenha = $("#RepetirSenha").val();
             var Permissao = $("#Permissao").val();
 
             if (Nome == "") {
@@ -134,7 +135,7 @@
                 sucesso = false;
             }
             else {
-                $("#erroCPF").html("");
+                $("#erroEmail").html("");
             }
             
             if (Senha == "") {
@@ -147,7 +148,21 @@
                     sucesso = false;
                 }
                 else {
-                    $("#erroCPF").html("");
+                    $("#erroSenha").html("");
+                }
+            }
+
+            if (RepetirSenha == "") {
+                $("#erroRepetirSenha").html("A senha deve ser digitada.");
+                sucesso = false;
+            }
+            else {
+                if (RepetirSenha = !Senha) {
+                    $("#erroRepetirSenha").html("A senha deve ser ambos iguais.");
+                    sucesso = false;
+                }
+                else {
+                    $("#erroRepetirSenha").html("");
                 }
             }
 
@@ -161,6 +176,7 @@
             $("#CPF").val("");
             $("#Email").val("");
             $("#Senha").val("");
+            $("#RepetirSenha").val("");
             $("#Permissao").val("");
         });
 
