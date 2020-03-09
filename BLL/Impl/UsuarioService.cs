@@ -35,9 +35,9 @@ namespace BLL.Impl
             return await _usuarioRepository.GetData();
         }
 
-        public Task<Response> Autententicar(string email, string password)
+        public async Task<UsuarioDTO> Autententicar(string email, string password)
         {
-            throw new NotImplementedException();
+            return await _usuarioRepository.Autententicar(email, password);
         }
 
         private Response Validate(UsuarioDTO item)
@@ -99,3 +99,4 @@ namespace BLL.Impl
         }
     }
 }
+
