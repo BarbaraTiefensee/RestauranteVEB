@@ -16,8 +16,6 @@ namespace DAO.Impl
             this._context = context;
         }
 
-        
-
         public async Task<Response> Insert(PedidoDTO pedido)
         {
             Response response = new Response();
