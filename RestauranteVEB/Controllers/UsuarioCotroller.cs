@@ -34,4 +34,5 @@ namespace RestauranteVEB.Controllers
                 return View();
             }
         }
+    }
 }
