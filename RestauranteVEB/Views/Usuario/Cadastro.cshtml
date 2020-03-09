@@ -46,14 +46,6 @@
     </div>
 
     <div class="form-group">
-        <div class="form-label-group">
-            <input type="password" id="RepetirSenha" name="RepetirSenha" class="form-control">
-            <span id="erroRepetirSenha" name="erroRepetirSenha" class="text-danger"></span><br />
-            <label for="RepetirSenha">Digite a senha novamente</label>
-        </div>
-    </div>
-
-    <div class="form-group">
         <label class="control-label col-md-2">Endereco</label>
         <div class="col-md-10">
             <select name="Endereco" id="Endereco" class="form-control">
@@ -105,7 +97,7 @@
             var CPF = $("#CPF").val();
             var Email = $("#Email").val();
             var Senha = $("#Senha").val();
-            var RepetirSenha = $("#RepetirSenha").val();
+            
             var Endereco = $("#Endereco").val();
 
             if (Nome == "") {
@@ -158,19 +150,8 @@
                 }
             }
 
-            if (RepetirSenha == "") {
-                $("#erroRepetirSenha").html("A senha deve ser digitada.");
-                sucesso = false;
-            }
-            else {
-                if (RepetirSenha = !Senha) {
-                    $("#erroRepetirSenha").html("A senha deve ser ambos iguais.");
-                    sucesso = false;
-                }
-                else {
-                    $("#erroRepetirSenha").html("");
-                }
-            }
+           
+            
 
             if (Endereco == "") {
                 $("#erroEndereco").html("O endereço deve ser digitado");
@@ -190,7 +171,7 @@
             $("#CPF").val("");
             $("#Email").val("");
             $("#Senha").val("");
-            $("#RepetirSenha").val("");
+      
             $("#Endereco").val("");
         });
 
