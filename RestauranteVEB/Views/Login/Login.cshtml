@@ -3,7 +3,7 @@
     ViewData["Title"] = "Login";
 }
 
-<html>
+    <html>
     <head>
 
         <meta charset="utf-8">
@@ -17,11 +17,11 @@
     </head>
 
     <body>
-        <form action="Autentica" method="post">
+        <form action="Autenticar" method="post">
             <div class="form-group">
                 <div class="form-label-group">
-                    <input type="text" name="usuario" id="usuario" class="form-control" placeholder="Usuario">
-                    <label for="usuario">Usuario</label>
+                    <input type="text" name="Email" id="Email" class="form-control" placeholder="Email">
+                    <label for="email">Email</label>
                 </div>
             </div>
 
@@ -36,4 +36,51 @@
         </form>
 
     </body>
-</html>
+
+    @section scripts{
+
+        <script type="text/javascript">
+        $(document).ready(function () {
+            $("#BotaoEnviar").click(function (e) {
+                var sucesso = true;
+                var email = $("#Email").val();
+                var senha = $("#Senha").val();
+                if (email == "") {
+                    $("#erroEmail").html("O email deve ser informado.");
+                    sucesso = false;
+                }
+                else {
+                    if (!validateEmail(email)) {
+                        $("#erroEmail").html("Email no formato incorreto.");
+                        sucesso = false;
+                    }
+                    else {
+                        $("#erroEmail").html("");
+                    }
+                }
+                if (senha == "") {
+                    $("#erroSenha").html("A senha deve ser informada.");
+                    sucesso = false;
+                }
+                else {
+                    if (senha.length < 6 || senha.length > 16) {
+                        $("#erroSenha").html("A senha deve conter no mínimo 6 a 16 caracteres.");
+                        sucesso = false;
+                    }
+                    else {
+                        $("#erroSenha").html("");
+                    }
+                }
+                if (!sucesso) {
+                    e.preventDefault();
+                }
+            });
+            $("#BotaoLimpar").click(function () {
+                $("#Email").val("");
+                $("#Senha").val("");
+            });
+        });
+        </script>
+    }
+
+    </html>
