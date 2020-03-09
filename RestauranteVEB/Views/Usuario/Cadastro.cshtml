@@ -102,12 +102,12 @@
             var Permissao = $("#Permissao").val();
 
             if (Nome == "") {
-                $("#erroNome").html("O nomeo deve ser informado.");
+                $("#erroNome").html("O nome deve ser informado.");
                 sucesso = false;
             }
             else {
                 if (Nome.length < 5 || Nome.length > 50) {
-                    $("#erroNome").html("O nome deve conter no mínimo 5 a 60 caracteres.");
+                    $("#erroNome").html("O nome deve conter no mínimo 5 a 50 caracteres.");
                     sucesso = false;
                 }
                 else {
@@ -120,8 +120,8 @@
                 sucesso = false;
             }
             else {
-                if (CPF.length = !12) {
-                    $("#erroCPF").html("O CPF deve conter 12 caracteres.");
+                if (CPF.length = !14) {
+                    $("#erroCPF").html("O CPF deve conter 14 caracteres.");
                     sucesso = false;
                 }
                 else {
@@ -142,8 +142,8 @@
                 sucesso = false;
             }
             else {
-                if (SEnha.length < 5 || Nome.length > 15 ) {
-                    $("#erroSenha").html("A senha deve conter no mínimo 5 a 15 caracteres.");
+                if (Senha.length < 5 || Nome.length > 15 ) {
+                    $("#erroSenha").html("A senha deve conter de 5 a 15 caracteres.");
                     sucesso = false;
                 }
                 else {
@@ -161,7 +161,7 @@
             $("#CPF").val("");
             $("#Email").val("");
             $("#Senha").val("");
-            $("#Profissao").val("");
+            $("#Permissao").val("");
         });
 
     </script>
