@@ -2,6 +2,7 @@
 using DTO;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,20 +14,6 @@ namespace DAO.Impl
         public UsuarioRepository(RContext context)
         {
             this._context = context;
-        }
-
-        public async Task<DataResponse<UsuarioDTO>> GetData()
-        {
-            DataResponse<UsuarioDTO> response = new DataResponse<UsuarioDTO>();
-
-            if (response.Erros.Count > 0)
-            {
-                response.Sucesso = false;
-                return response;
-            }
-
-            await this._context.SaveChangesAsync();
-            return response;
         }
 
         public async Task<Response> Insert(UsuarioDTO usuario)
@@ -41,6 +28,20 @@ namespace DAO.Impl
 
             this._context.Usuarios.Add(usuario);
             await this._context.SaveChangesAsync();
+            return response;
+        }
+
+        public async Task<DataResponse<UsuarioDTO>> GetData()
+        {
+            DataResponse<UsuarioDTO> response = new DataResponse<UsuarioDTO>();
+
+            if (response.Erros.Count > 0)
+            {
+                response.Sucesso = false;
+                return response;
+            }
+
+            await this._context.Usuarios.ToListAsync();
             return response;
         }
 

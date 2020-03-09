@@ -2,6 +2,7 @@
 using DTO;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -27,6 +28,20 @@ namespace DAO.Impl
 
             this._context.Ingredientes.Add(ingrediente);
             await this._context.SaveChangesAsync();
+            return response;
+        }
+
+        public async Task<DataResponse<IngredienteDTO>> GetData()
+        {
+            DataResponse<IngredienteDTO> response = new DataResponse<IngredienteDTO>();
+
+            if (response.Erros.Count > 0)
+            {
+                response.Sucesso = false;
+                return response;
+            }
+
+            await this._context.Ingredientes.ToListAsync();
             return response;
         }
     }
