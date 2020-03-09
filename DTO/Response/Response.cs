@@ -28,3 +28,4 @@ namespace DTO
             this.Erros = new List<string>();
         }
     }
+}
