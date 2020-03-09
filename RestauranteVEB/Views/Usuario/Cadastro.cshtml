@@ -3,6 +3,8 @@
     ViewData["Title"] = "Cadastro";
 }
 
+
+
 <h1>Cadastrar Usuário</h1>
 
 <br />
@@ -51,20 +53,22 @@
         </div>
     </div>
 
-    @{
-        string[] cor = Enum.GetNames(typeof(DTO.Enums.Permissao));
-    }
-
     <div class="form-group">
-        <label class="control-label col-md-2">Permissao</label>
+        <label class="control-label col-md-2">Endereco</label>
         <div class="col-md-10">
-            <select name="Permissao" id="Permissao" class="form-control">
-                @foreach (var item in ViewBag.Permissao)
+            <select name="Endereco" id="Endereco" class="form-control">
+                @foreach (var item in ViewBag.Endereco)
                 {
-                    <option value="@item.Nome">@item.Nome</option>
+                    <option value="@item.ID">@item.CEP</option>
+                    <option value="@item.ID">@item.Bairro</option>
+                    <option value="@item.ID">@item.Cidade</option>
+                    <option value="@item.ID">@item.Rua</option>
+                    <option value="@item.ID">@item.UF</option>
+                    <option value="@item.ID">@item.Numero</option>
+                    <option value="@item.ID">@item.Complemento</option>
                 }
             </select>
-            <span id="erroPermissao" name="erroPermissao" class="text-danger"></span><br />
+            <span id="erroEndereco" name="erroEndereco" class="text-danger"></span><br />
         </div>
     </div>
 
@@ -88,6 +92,8 @@
 
 </body>
 
+
+
 @section scripts{
 
     <script type="text/javascript">
@@ -100,7 +106,7 @@
             var Email = $("#Email").val();
             var Senha = $("#Senha").val();
             var RepetirSenha = $("#RepetirSenha").val();
-            var Permissao = $("#Permissao").val();
+            var Endereco = $("#Endereco").val();
 
             if (Nome == "") {
                 $("#erroNome").html("O nome deve ser informado.");
@@ -166,6 +172,14 @@
                 }
             }
 
+            if (Endereco == "") {
+                $("#erroEndereco").html("O endereço deve ser digitado");
+                sucesso = false;
+            }
+            else {
+                $("#erroEndereco").html("");
+            }
+
             if (!sucesso) {
                 e.preventDefault();
             }
@@ -177,7 +191,7 @@
             $("#Email").val("");
             $("#Senha").val("");
             $("#RepetirSenha").val("");
-            $("#Permissao").val("");
+            $("#Endereco").val("");
         });
 
     </script>

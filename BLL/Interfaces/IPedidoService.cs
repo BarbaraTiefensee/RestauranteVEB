@@ -8,7 +8,7 @@ namespace BLL.Interfaces
 {
     public interface IPedidoService
     {
-        Task Insert(PedidoDTO pedido);
-        Task<List<PedidoDTO>> GetData();
+        Task<Response> Insert(PedidoDTO pedido);
+        Task<DataResponse<PedidoDTO>> GetData();
     }
 }

@@ -1,4 +1,5 @@
 ﻿using BLL.Interfaces;
+using DAO.Interfaces;
 using DTO;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,12 @@ namespace BLL.Impl
 {
     public class PedidoService : IPedidoService
     {
+        private IPedidoRepository _pedidoRepository;
+        public PedidoService(IPedidoRepository pedidoRepository)
+        {
+            this._pedidoRepository = pedidoRepository;
+        }
+
         public async Task Insert(PedidoDTO pedido)
         {
             throw new NotImplementedException();
