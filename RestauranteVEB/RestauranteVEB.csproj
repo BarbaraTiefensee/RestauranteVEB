@@ -5,6 +5,25 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Content\**" />
+    <Compile Remove="Views\Estoque\**" />
+    <Compile Remove="Views\Pedido\**" />
+    <Content Remove="Content\**" />
+    <Content Remove="Views\Estoque\**" />
+    <Content Remove="Views\Pedido\**" />
+    <EmbeddedResource Remove="Content\**" />
+    <EmbeddedResource Remove="Views\Estoque\**" />
+    <EmbeddedResource Remove="Views\Pedido\**" />
+    <None Remove="Content\**" />
+    <None Remove="Views\Estoque\**" />
+    <None Remove="Views\Pedido\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Models\EstoqueViewModel.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="EntityFramework" Version="6.4.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.2" />
@@ -15,12 +34,6 @@
     <ProjectReference Include="..\BLL\BLL.csproj" />
     <ProjectReference Include="..\DAO\DAO.csproj" />
     <ProjectReference Include="..\DTO\DTO.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Content\" />
-    <Folder Include="Views\Estoque\" />
-    <Folder Include="Views\Pedido\" />
   </ItemGroup>
 
 
