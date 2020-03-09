@@ -16,14 +16,35 @@ namespace BLL.Impl
             this._pedidoRepository = pedidoRepository;
         }
 
-        public async Task Insert(PedidoDTO pedido)
+        public async Task<Response> Insert(PedidoDTO pedido)
         {
-            throw new NotImplementedException();
+            Response response = Validate(pedido);
+
+            if (response.Erros.Count > 0)
+            {
+                response.Sucesso = false;
+                return response;
+            }
+
+            await _pedidoRepository.Insert(pedido);
+            return response;
         }
 
-        public async Task<List<PedidoDTO>> GetData()
+        public async Task<DataResponse<PedidoDTO>> GetData()
         {
-            throw new NotImplementedException();
+            return await _pedidoRepository.GetData();
         }
+        private Response Validate(PedidoDTO item)
+        {
+            Response response = new Response();
+
+            if (item.Preco.Equals(""))
+            {
+                response.Erros.Add("O preco deve ser informado.");
+            }
+
+            return response;
+        }
+
     }
 }
