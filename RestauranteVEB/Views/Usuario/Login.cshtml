@@ -1,0 +1,85 @@
+﻿
+@{
+    ViewData["Title"] = "Login";
+}
+
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Login</title>
+
+</head>
+
+<body>
+    <form action="Autenticar" method="post">
+        <div class="form-group">
+            <div class="form-label-group">
+                <input type="text" name="Email" id="Email" class="form-control" placeholder="Email">
+                <label for="email">Email</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="form-label-group">
+                <input type="password" name="Senha" id="Senha" class="form-control" placeholder="Senha">
+                <label for="Senha">Senha</label>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+    </form>
+
+</body>
+</html>
+
+@section scripts{
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#BotaoEnviar").click(function (e) {
+                var sucesso = true;
+                var email = $("#Email").val();
+                var senha = $("#Senha").val();
+                if (email == "") {
+                    $("#erroEmail").html("O email deve ser informado.");
+                    sucesso = false;
+                }
+                else {
+                    if (!validateEmail(email)) {
+                        $("#erroEmail").html("Email no formato incorreto.");
+                        sucesso = false;
+                    }
+                    else {
+                        $("#erroEmail").html("");
+                    }
+                }
+                if (senha == "") {
+                    $("#erroSenha").html("A senha deve ser informada.");
+                    sucesso = false;
+                }
+                else {
+                    if (senha.length < 6 || senha.length > 16) {
+                        $("#erroSenha").html("A senha deve conter no mínimo 6 a 16 caracteres.");
+                        sucesso = false;
+                    }
+                    else {
+                        $("#erroSenha").html("");
+                    }
+                }
+                if (!sucesso) {
+                    e.preventDefault();
+                }
+            });
+            $("#BotaoLimpar").click(function () {
+                $("#Email").val("");
+                $("#Senha").val("");
+            });
+        });
+    </script>
+}

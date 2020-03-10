@@ -5,22 +5,33 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Content\**" />
+    <Compile Remove="Views\Estoque\**" />
+    <Content Remove="Content\**" />
+    <Content Remove="Views\Estoque\**" />
+    <EmbeddedResource Remove="Content\**" />
+    <EmbeddedResource Remove="Views\Estoque\**" />
+    <None Remove="Content\**" />
+    <None Remove="Views\Estoque\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Models\EstoqueViewModel.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="9.0.0" />
     <PackageReference Include="EntityFramework" Version="6.4.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.2" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />
+    <PackageReference Include="RestSharp" Version="106.10.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\BLL\BLL.csproj" />
     <ProjectReference Include="..\DAO\DAO.csproj" />
     <ProjectReference Include="..\DTO\DTO.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Content\" />
-    <Folder Include="Views\Estoque\" />
-    <Folder Include="Views\Pedido\" />
   </ItemGroup>
 
 
