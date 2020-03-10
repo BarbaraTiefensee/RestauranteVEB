@@ -17,11 +17,12 @@
 </head>
 
 <body>
-    <form action="Autenticar" method="post">
+    <form action="Login" method="post">
         <div class="form-group">
             <label for="email">Email</label>
             <div class="form-label-group">
                 <input type="text" name="Email" id="Email" class="form-control" placeholder="Email">
+                <span id="erroEmail" name="erroEmail" class="text-danger"></span><br />
             </div>
         </div>
 
@@ -29,6 +30,7 @@
             <label for="Senha">Senha</label>
             <div class="form-label-group">
                 <input type="password" name="Senha" id="Senha" class="form-control" placeholder="Senha">
+                <span id="erroSenha" name="erroSenha" class="text-danger"></span><br />
             </div>
         </div>
 
@@ -36,8 +38,8 @@
             string[] permissao = Enum.GetNames(typeof(DTO.Enums.Permissao));
         }
         <div class="form-group">
-            <label class="control-label col-md-2">Permissão</label>
-            <div class="col-md-10">
+            <label for="permissao">Permissão</label>
+            <div class="form-label-group">
                 <select name="Permissao" id="Permissao" class="form-control">
                     @for (int i = 0; i < permissao.Length; i++)
                     {
@@ -48,7 +50,8 @@
             </div>
         </div>
 
-        <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+        <button type="submit" class="btn btn-primary btn-block" id="BotaoEnviar" name="BotaoEnviar">Entrar</button>
+        <button type="button" class="btn btn-primary btn-block" id="BotaoLimpar" name="BotaoLimpar">Limpar</button>
     </form>
 
 </body>
@@ -60,9 +63,11 @@
         $(document).ready(function () {
 
             $("#BotaoEnviar").click(function (e) {
+
                 var sucesso = true;
                 var email = $("#Email").val();
                 var senha = $("#Senha").val();
+
                 if (email == "") {
                     $("#erroEmail").html("O email deve ser informado.");
                     sucesso = false;
@@ -89,10 +94,12 @@
                         $("#erroSenha").html("");
                     }
                 }
+
                 if (!sucesso) {
                     e.preventDefault();
                 }
             });
+
             $("#BotaoLimpar").click(function () {
                 $("#Email").val("");
                 $("#Senha").val("");
