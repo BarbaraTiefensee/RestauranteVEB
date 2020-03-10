@@ -38,13 +38,14 @@ namespace BLL.Impl
         {
             Response response = new Response();
 
-            if (item.Preco.Equals(""))
+            if (item.NomeNoPedido.Equals(""))
             {
-                response.Erros.Add("O preco deve ser informado.");
+                response.Erros.Add("O nome deve ser informado.");
             }
 
             return response;
         }
+
 
     }
 }

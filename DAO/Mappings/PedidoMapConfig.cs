@@ -13,7 +13,7 @@ namespace DAO.Mappings
         {
             builder.ToTable("PEDIDOS");
 
-            builder.Property(p => p.Preco).HasColumnName("float").IsRequired();
+            builder.Property(p => p.NomeNoPedido).IsRequired().IsUnicode(false).HasMaxLength(50);
             
         }
     }

@@ -8,8 +8,8 @@ namespace DTO
     public class PedidoDTO
     {
         public int ID { get; set; }
-        public double Preco { get; set; }
-        public Refeicao Refeicao { get; set; }
-        public Bebida Bebida { get; set; }
+        public string NomeNoPedido { get; set; }
+        public RefeicaoDTO Refeicao { get; set; }
+        public BebidaDTO Bebida { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using DTO.Enums;
+﻿using DTO;
+using DTO.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,8 +9,8 @@ namespace RestauranteVEB.Models
 {
     public class PedidoViewModel
     {
-        public double Preco { get; set; }
-        public Refeicao Refeicao { get; set; }
-        public Bebida Bebida { get; set; }
+        public string NomeNoPedido { get; set; }
+        public RefeicaoDTO Refeicao { get; set; }
+        public BebidaDTO Bebida { get; set; }
     }
 }
