@@ -1,7 +1,91 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Cadastrar";
 }
 
-<h1>Cadastrar</h1>
+<h1>Cadastrar Ingrediente</h1>
+<br />
+
+<form method="post">
+    <div class="form-group">
+        <label for="Nome">Nome</label>
+        <div class="form-label-group">
+            <input type="text" id="Nome" name="Nome" class="form-control">
+            <span id="erroNome" name="erroNome" class="text-danger"></span><br />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="Quantidade">Quantidade</label>
+        <div class="form-label-group">
+            <input type="text" id="Quantidade" name="Quantidade" class="form-control">
+            <span id="erroQuantidade" name="erroQuantidade" class="text-danger"></span><br />
+        </div>
+    </div>
+
+    <div class="row">
+        @if (ViewBag.MensagemErro != null)
+        {
+            <div class="form-group">
+                <div class="col-md-10">
+                    <span class="text-danger">@ViewBag.MensagemErro</span>
+                </div>
+            </div>
+        }
+
+        <div class="form-group">
+            <div class="col-md-offset-2">
+                <input type="submit" value="Cadastrar" class="btn btn-primary btn-block" id="BotaoEnviar" name="BotaoEnviar" />
+                <input type="button" value="Limpar" class="btn btn-primary btn-block" id="BotaoLimpar" name="BotaoLimpar" />
+            </div>
+        </div>
+    </div>
+</form>
+
+@section scripts{
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $("#BotaoEnviar").click(function (e) {
+
+                var sucesso = true;
+                var Nome = $("#Nome").val();
+                var Quantidade = $("#Quantidade").val();
+
+                if (Nome == "") {
+                    $("#erroNome").html("O nome deve ser informado.");
+                    sucesso = false;
+                }
+                else {
+                    if (Nome.length < 5 || Nome.length > 50) {
+                        $("#erroNome").html("O nome deve conter no mínimo 5 a 50 caracteres.");
+                        sucesso = false;
+                    }
+                    else {
+                        $("#erroNome").html("");
+                    }
+                }
+
+                if (Quantidade == "") {
+                    $("#erroQuantidade").html("A quantidade deve ser informada.");
+                    sucesso = false;
+                }
+                else {
+                    $("#erroNome").html("");
+                }
+
+                if (!sucesso) {
+                    e.preventDefault();
+                }
+            });
+        });
+
+        $("#BotaoLimpar").click(function () {
+            $("#Nome").val("");
+            $("#Quantidade").val("");
+        });
+
+    </script>
+}
 
