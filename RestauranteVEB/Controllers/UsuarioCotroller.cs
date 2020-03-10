@@ -80,6 +80,7 @@ namespace RestauranteVEB.Controllers
             return View();
         }
 
+        /*
         [HttpPost]
         public async Task<ActionResult> Login(string email, string senha)
         {
@@ -100,5 +101,6 @@ namespace RestauranteVEB.Controllers
 
             return View();
         }
+        */
     }
 }
