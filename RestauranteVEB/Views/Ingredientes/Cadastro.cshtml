@@ -1,0 +1,85 @@
+﻿
+@{
+    ViewData["Title"] = "Cadastro";
+}
+
+<h1>Cadastro do Ingrediente</h1>
+
+<br />
+
+<body>
+
+    <div class="form-group">
+        <div class="form-label-group">
+            <input type="text" id="Nome" name="Nome" class="form-control">
+            <span id="erroNome" name="erroNome" class="text-danger"></span><br />
+            <label for="Nome">Nome</label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="form-label-group">
+            <input type="number" id="Quantidade" name="Quantidade" class="form-control">
+            <span id="erroQuantidade" name="erroQuantidade" class="text-danger"></span><br />
+            <label for="Quantidade">Quantidade</label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Cadastrar" class="btn btn-default" id="BotaoEnviar" name="BotaoEnviar" />
+            <input type="button" value="Limpar" class="btn btn-default" id="BotaoLimpar" name="BotaoLimpar" />
+        </div>
+    </div>
+    </div>
+
+</body>
+
+
+
+@section scripts{
+
+    <script type="text/javascript">
+
+        $("#BotaoEnviar").click(function (e) {
+
+            var sucesso = true;
+            var Nome = $("#Nome").val();
+            var Quantidade = $("#Quantidade").val();
+
+            if (Nome == "") {
+                    $("#erroNome").html("O nome deve ser informado.");
+                    sucesso = false;
+                }
+                else {
+                    if (Nome.length < 5) {
+                        $("#erroNome").html("O nome deve conter no mínimo 5 caracteres.");
+                        sucesso = false;
+                    }
+                    else {
+                        $("#erroNome").html("");
+                    }
+            }
+
+            if (Quantidade == "") {
+                    $("#erroQuantidade").html("A quantidade deve ser infromada.");
+                    sucesso = false;
+                }
+                else {
+                    if (Quantidade.length < 5) {
+                        $("#erroQuantidade").html("Deve conter no mínimo 5 ingredientes para fazer o estoque.");
+                        sucesso = false;
+                    }
+                    else {
+                        $("#erroQuantidade").html("");
+                    }
+            }
+
+        $("#BotaoLimpar").click(function () {
+            $("#Nome").val("");
+            $("#Quantidade").val("");
+        });
+
+    </script>
+
+}

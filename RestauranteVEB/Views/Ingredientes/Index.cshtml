@@ -1,0 +1,25 @@
+﻿
+@model List<RestauranteVEB.Models.IngredienteQueryViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table class="table">
+    <tr>
+        <td>ID</td>
+        <td>Nome</td>
+        <td>Quantidade</td>
+    </tr>
+
+    @foreach (RestauranteVEB.Models.IngredienteQueryViewModel item in Model)
+    {
+        <tr>
+            <td>@item.ID</td>
+            <td>@item.Nome</td>
+            <td>@item.Quantidade</td>
+        </tr>
+    }
+</table>
