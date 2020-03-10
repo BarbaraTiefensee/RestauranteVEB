@@ -7,16 +7,12 @@
   <ItemGroup>
     <Compile Remove="Content\**" />
     <Compile Remove="Views\Estoque\**" />
-    <Compile Remove="Views\Pedido\**" />
     <Content Remove="Content\**" />
     <Content Remove="Views\Estoque\**" />
-    <Content Remove="Views\Pedido\**" />
     <EmbeddedResource Remove="Content\**" />
     <EmbeddedResource Remove="Views\Estoque\**" />
-    <EmbeddedResource Remove="Views\Pedido\**" />
     <None Remove="Content\**" />
     <None Remove="Views\Estoque\**" />
-    <None Remove="Views\Pedido\**" />
   </ItemGroup>
 
   <ItemGroup>
