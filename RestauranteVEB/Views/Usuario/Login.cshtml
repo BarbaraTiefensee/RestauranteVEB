@@ -32,6 +32,22 @@
             </div>
         </div>
 
+        @{
+            string[] permissao = Enum.GetNames(typeof(DTO.Enums.Permissao));
+        }
+        <div class="form-group">
+            <label class="control-label col-md-2">Permissão</label>
+            <div class="col-md-10">
+                <select name="Permissao" id="Permissao" class="form-control">
+                    @for (int i = 0; i < permissao.Length; i++)
+                    {
+                        <option value="@i">@permissao[i]</option>
+                    }
+                </select>
+                <span id="erroPermissao" name="erroPermissao" class="text-danger"></span><br />
+            </div>
+        </div>
+
         <button type="submit" class="btn btn-primary btn-block">Entrar</button>
     </form>
 
