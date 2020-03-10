@@ -1,0 +1,128 @@
+﻿
+@{
+    ViewData["Title"] = "Cadastro";
+}
+
+<h1>Cadastro do Pedido</h1>
+
+<br />
+
+
+<body>
+
+
+    <div class="form-group">
+        <div class="form-label-group">
+            <input type="number" id="ID" name="ID" class="form-control">
+            <span id="erroID" name="erroID" class="text-danger"></span><br />
+            <label for="ID">ID</label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="form-label-group">
+            <input type="text" id="Preco" name="Preco" class="form-control">
+            <span id="erroPreco" name="erroPreco" class="text-danger"></span><br />
+            <label for="Preco">Preco</label>
+        </div>
+    </div>
+
+
+    @{
+        string[] Refeicao = Enum.GetNames(typeof(DTO.Enums.Refeicao));
+    }
+    <div class="form-group">
+        <label class="control-label col-md-2">Refeicao</label>
+        <div class="col-md-10">
+            <select name="Refeicao" id="Refeicao" class="form-control">
+                @for (int i = 0; i < Refeicao.Length; i++)
+                {
+                    <option value="@i">@Refeicao[i]</option>
+                }
+            </select>
+            <span id="erroRefeicao" name="erroRefeicao" class="text-danger"></span><br />
+        </div>
+    </div>
+
+    @{
+        string[] Bebida = Enum.GetNames(typeof(DTO.Enums.Bebida));
+    }
+    <div class="form-group">
+        <label class="control-label col-md-2">Bebida</label>
+        <div class="col-md-10">
+            <select name="Bebida" id="Bebida" class="form-control">
+                @for (int i = 0; i < Bebida.Length; i++)
+                {
+                    <option value="@i">@Bebida[i]</option>
+                }
+            </select>
+            <span id="erroBebida" name="erroBebida" class="text-danger"></span><br />
+        </div>
+    </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Cadastrar" class="btn btn-default" id="BotaoEnviar" name="BotaoEnviar" />
+                <input type="button" value="Limpar" class="btn btn-default" id="BotaoLimpar" name="BotaoLimpar" />
+            </div>
+        </div>
+    </div>
+
+</body>
+
+
+
+@section scripts{
+
+    <script type="text/javascript">
+
+        $("#BotaoEnviar").click(function (e) {
+
+            var sucesso = true;
+            var ID = $("#ID").val();
+            var Preco = $("#Preco").val();
+            var Refeicao = $("#Refeicao").val();
+            var Bebida = $("#Bebida").val();
+
+            if (ID == "") {
+                $("#erroID").html("O ID do pedido deve ser informado.");
+                sucesso = false;
+            }
+            else {
+                    $("#erroID").html("");
+            }
+
+            if (Preco == "") {
+                $("#erroPreco").html("O preço deve ser informado.");
+                sucesso = false;
+            }
+            else {
+                    $("#erroCPF").html("");
+            }
+
+            if (Refeicao == "") {
+                $("#erroRefeicao").html("A refeição deve ser selecionada.");
+                sucesso = false;
+            }
+            else {
+                $("#erroRefeicao").html("");
+            }
+
+            if (Bebida == "") {
+                $("#erroBebida").html("A bebida deve ser selecionada.");
+                sucesso = false;
+            }
+            else {
+                    $("#erroBebida").html("");
+            }
+
+        $("#BotaoLimpar").click(function () {
+            $("#ID").val("");
+            $("#Preco").val("");
+            $("#Refeicao").val("");
+            $("#Bebida").val("");
+        });
+
+    </script>
+
+}

@@ -1,0 +1,28 @@
+﻿
+@model List<RestauranteVEB.Models.PedidoQueryViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>Preco</th>
+        <th>Refeicao</th>
+        <th>Bebida</th>
+    </tr>
+
+    @foreach (RestauranteVEB.Models.PedidoQueryViewModel item in Model)
+    {
+        <tr>
+            <td>@item.ID</td>
+            <td>@item.Preco.ToString("C2")</td>
+            <td>@item.Refeicao</td>
+            <td>@item.Bebida</td>
+        </tr>
+    }
+</table>
