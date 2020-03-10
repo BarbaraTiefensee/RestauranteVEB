@@ -10,7 +10,7 @@ namespace DAO
     public class RContext : DbContext
     {
         //@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\900208\Documents\SSLocadora.mdf;Integrated Security=True;Connect Timeout=30"
-        public RContext() : base()
+        public RContext(DbContextOptions options) : base(options)
         {
 
         }
