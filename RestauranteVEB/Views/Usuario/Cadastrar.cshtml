@@ -7,10 +7,7 @@
 <h1>Cadastrar Usuário</h1>
 <br />
 
-
-<body class="bg-dark">
-
-
+<form method="post">
     <div class="form-group">
         <label for="Nome">Nome</label>
         <div class="form-label-group">
@@ -22,7 +19,7 @@
     <div class="form-group">
         <label for="CPF">CPF</label>
         <div class="form-label-group">
-            <input type="text" id="CPF" name="CPF" class="form-control">
+            <input type="text" id="CPF" name="CPF" class="form-control" placeholder="000.000.000-00">
             <span id="erroCPF" name="erroCPF" class="text-danger"></span><br />
         </div>
     </div>
@@ -36,18 +33,18 @@
     </div>
 
     <div class="form-group">
-        <label for="Senha">Confirmar Senha</label>
-        <div class="form-label-group">
-            <input type="password" id="ConfirmarSenha" name="ConfirmarSenha" class="form-control">
-            <span id="erroConfirmarSenha" name="erroConfirmarSenha" class="text-danger"></span><br />
-        </div>
-    </div>
-
-    <div class="form-group">
         <label for="Senha">Senha</label>
         <div class="form-label-group">
             <input type="password" id="Senha" name="Senha" class="form-control">
             <span id="erroSenha" name="erroSenha" class="text-danger"></span><br />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="Senha">Confirmar Senha</label>
+        <div class="form-label-group">
+            <input type="password" id="ConfirmarSenha" name="ConfirmarSenha" class="form-control">
+            <span id="erroConfirmarSenha" name="erroConfirmarSenha" class="text-danger"></span><br />
         </div>
     </div>
 
@@ -68,75 +65,80 @@
             </div>
         </div>
     </div>
-
-</body>
-
-
+</form>
 
 @section scripts{
 
     <script type="text/javascript">
 
-        $("#BotaoEnviar").click(function (e) {
+        $(document).ready(function () {
 
-            var sucesso = true;
-            var Nome = $("#Nome").val();
-            var CPF = $("#CPF").val();
-            var Email = $("#Email").val();
-            var Senha = $("#Senha").val();
-            var ConfirmarSenha = $("#ConfirmarSenha").val();
+            $("#BotaoEnviar").click(function (e) {
 
-            if (Nome == "") {
-                $("#erroNome").html("O nome deve ser informado.");
-                sucesso = false;
-            }
-            else {
-                if (Nome.length < 5 || Nome.length > 50) {
-                    $("#erroNome").html("O nome deve conter no mínimo 5 a 50 caracteres.");
+                var sucesso = true;
+                var Nome = $("#Nome").val();
+                var CPF = $("#CPF").val();
+                var Email = $("#Email").val();
+                var Senha = $("#Senha").val();
+                var ConfirmarSenha = $("#ConfirmarSenha").val();
+
+                if (Nome == "") {
+                    $("#erroNome").html("O nome deve ser informado.");
                     sucesso = false;
                 }
                 else {
-                    $("#erroNome").html("");
+                    if (Nome.length < 5 || Nome.length > 50) {
+                        $("#erroNome").html("O nome deve conter no mínimo 5 a 50 caracteres.");
+                        sucesso = false;
+                    }
+                    else {
+                        $("#erroNome").html("");
+                    }
                 }
-            }
 
-            if (CPF == "") {
-                $("#erroCPF").html("O CPF deve ser informado.");
-                sucesso = false;
-            }
-            else {
-                if (CPF.length = !14) {
-                    $("#erroCPF").html("O CPF deve conter 14 caracteres.");
+                if (CPF == "") {
+                    $("#erroCPF").html("O CPF deve ser informado.");
                     sucesso = false;
                 }
                 else {
-                    $("#erroCPF").html("");
+                    if (!validateCPF(CPF)) {
+                        $("#erroCPF").html("O CPF deve conter 14 caracteres.");
+                        sucesso = false;
+                    }
+                    else {
+                        $("#erroCPF").html("");
+                    }
                 }
-            }
 
-            if (Email == "") {
-                $("#erroEmail").html("O Email deve ser informado.");
-                sucesso = false;
-            }
-            else {
-                $("#erroEmail").html("");
-            }
-            
-            if (Senha == "") {
-                $("#erroSenha").html("A senha deve ser informado.");
-                sucesso = false;
-            }
-            else {
-                if (Senha.length < 5 || Senha.length > 15 ) {
-                    $("#erroSenha").html("A senha deve conter de 5 a 15 caracteres.");
+                if (Email == "") {
+                    $("#erroEmail").html("O Email deve ser informado.");
                     sucesso = false;
                 }
                 else {
-                    $("#erroSenha").html("");
+                    if (!validateEmail(Email)) {
+                        $("#erroEmail").html("Email no formato incorreto.");
+                        sucesso = false;
+                    }
+                    else {
+                        $("#erroEmail").html("");
+                    }
                 }
-            }
 
-            if (ConfirmarSenha != Senha) {
+                if (Senha == "") {
+                    $("#erroSenha").html("A senha deve ser informada.");
+                    sucesso = false;
+                }
+                else {
+                    if (Senha.length < 5 || Senha.length > 15) {
+                        $("#erroSenha").html("A senha deve conter de 5 a 15 caracteres.");
+                        sucesso = false;
+                    }
+                    else {
+                        $("#erroSenha").html("");
+                    }
+                }
+
+                if (ConfirmarSenha != Senha) {
                     $("#erroConfirmarSenha").html("As senhas são diferentes.");
                     sucesso = false;
                 }
@@ -144,9 +146,12 @@
                     $("#erroConfirmarSenha").html("");
                 }
 
-            if (!sucesso) {
-                e.preventDefault();
-            }
+                alert(sucesso);
+
+                if (!sucesso) {
+                    e.preventDefault();
+                }
+            });
         });
 
         $("#BotaoLimpar").click(function () {
@@ -154,11 +159,8 @@
             $("#CPF").val("");
             $("#Email").val("");
             $("#Senha").val("");
-      
-            $("#Endereco").val("");
+            $("#ConfirmarSenha").val("");
         });
 
     </script>
-
 }
-

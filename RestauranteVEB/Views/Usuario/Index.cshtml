@@ -15,8 +15,6 @@
             <th>CPF</th>
             <th>Email</th>
             <th>Senha</th>
-         
-            <th>Endereco</th>
         </tr>
 
         @foreach (RestauranteVEB.Models.UsuarioQueryViewModel item in Model)
@@ -27,14 +25,6 @@
                <td>@item.CPF</td>
                <td>@item.Email</td>
                <th>@item.Senha</th>
-               <th>@item.RepetirSenha</th>
-               <th>@item.Endereco.Bairro</th>
-               <th>@item.Endereco.CEP</th>
-               <th>@item.Endereco.Cidade</th>
-               <th>@item.Endereco.Complemento</th>
-               <th>@item.Endereco.Numero</th>
-               <th>@item.Endereco.Rua</th>
-               <th>@item.Endereco.</th>
             </tr>
          }
     </table>
