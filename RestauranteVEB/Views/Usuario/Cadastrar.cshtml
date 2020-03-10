@@ -12,53 +12,42 @@
 
 
     <div class="form-group">
+        <label for="Nome">Nome</label>
         <div class="form-label-group">
             <input type="text" id="Nome" name="Nome" class="form-control">
             <span id="erroNome" name="erroNome" class="text-danger"></span><br />
-            <label for="Nome">Nome</label>
         </div>
     </div>
 
     <div class="form-group">
+        <label for="CPF">CPF</label>
         <div class="form-label-group">
             <input type="text" id="CPF" name="CPF" class="form-control">
             <span id="erroCPF" name="erroCPF" class="text-danger"></span><br />
-            <label for="CPF">CPF</label>
         </div>
     </div>
 
     <div class="form-group">
+        <label for="Email">Email</label>
         <div class="form-label-group">
             <input type="text" id="Email" name="Email" class="form-control">
             <span id="erroEmail" name="erroEmail" class="text-danger"></span><br />
-            <label for="Email">Email</label>
         </div>
     </div>
 
     <div class="form-group">
+        <label for="Senha">Confirmar Senha</label>
+        <div class="form-label-group">
+            <input type="password" id="ConfirmarSenha" name="ConfirmarSenha" class="form-control">
+            <span id="erroConfirmarSenha" name="erroConfirmarSenha" class="text-danger"></span><br />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="Senha">Senha</label>
         <div class="form-label-group">
             <input type="password" id="Senha" name="Senha" class="form-control">
             <span id="erroSenha" name="erroSenha" class="text-danger"></span><br />
-            <label for="Senha">Senha</label>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label class="control-label col-md-2">Endereco</label>
-        <div class="col-md-10">
-            <select name="Endereco" id="Endereco" class="form-control">
-                @foreach (var item in ViewBag.Endereco)
-                {
-                    <option value="@item.ID">@item.CEP</option>
-                    <option value="@item.ID">@item.Bairro</option>
-                    <option value="@item.ID">@item.Cidade</option>
-                    <option value="@item.ID">@item.Rua</option>
-                    <option value="@item.ID">@item.UF</option>
-                    <option value="@item.ID">@item.Numero</option>
-                    <option value="@item.ID">@item.Complemento</option>
-                }
-            </select>
-            <span id="erroEndereco" name="erroEndereco" class="text-danger"></span><br />
         </div>
     </div>
 
@@ -95,7 +84,7 @@
             var CPF = $("#CPF").val();
             var Email = $("#Email").val();
             var Senha = $("#Senha").val();
-            var Endereco = $("#Endereco").val();
+            var ConfirmarSenha = $("#ConfirmarSenha").val();
 
             if (Nome == "") {
                 $("#erroNome").html("O nome deve ser informado.");
@@ -138,7 +127,7 @@
                 sucesso = false;
             }
             else {
-                if (Senha.length < 5 || Nome.length > 15 ) {
+                if (Senha.length < 5 || Senha.length > 15 ) {
                     $("#erroSenha").html("A senha deve conter de 5 a 15 caracteres.");
                     sucesso = false;
                 }
@@ -147,16 +136,13 @@
                 }
             }
 
-           
-            
-
-            if (Endereco == "") {
-                $("#erroEndereco").html("O endereço deve ser digitado");
-                sucesso = false;
-            }
-            else {
-                $("#erroEndereco").html("");
-            }
+            if (ConfirmarSenha != Senha) {
+                    $("#erroConfirmarSenha").html("As senhas são diferentes.");
+                    sucesso = false;
+                }
+                else {
+                    $("#erroConfirmarSenha").html("");
+                }
 
             if (!sucesso) {
                 e.preventDefault();
