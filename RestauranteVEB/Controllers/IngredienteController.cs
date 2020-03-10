@@ -39,7 +39,7 @@ namespace RestauranteVEB.Controllers
             {
                 await _ingredienteService.Insert(dto);
 
-                return RedirectToAction("Index", "Usuario");
+                return RedirectToAction("Index", "Ingrediente");
             }
             catch (Exception ex)
             {
