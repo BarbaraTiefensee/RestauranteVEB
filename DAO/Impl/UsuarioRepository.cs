@@ -28,6 +28,7 @@ namespace DAO.Impl
 
             this._context.Usuarios.Add(usuario);
             await this._context.SaveChangesAsync();
+
             return response;
         }
 
