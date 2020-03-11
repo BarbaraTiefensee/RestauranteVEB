@@ -43,7 +43,6 @@ namespace DAO.Impl
                 var teste = await this._context.Refeicoes.ToListAsync();
                 response.Data = teste;
                 return response;
-
             }
             catch (Exception ex)
             {
