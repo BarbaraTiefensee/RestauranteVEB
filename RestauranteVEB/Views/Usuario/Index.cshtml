@@ -1,6 +1,5 @@
 ﻿
 @model List<RestauranteVEB.Models.UsuarioQueryViewModel>
-
     @{
         ViewBag.Title = "Index";
     }
@@ -11,9 +10,9 @@
         <tr>
             <th>ID</th>
             <th>Nome</th>
+            <th>CPF</th>
             <th>Email</th>
             <th>Senha</th>
-            <th>CPF</th>
         </tr>
 
         @foreach (RestauranteVEB.Models.UsuarioQueryViewModel item in Model)
@@ -21,9 +20,9 @@
             <tr>
                <td>@item.ID</td>
                <td>@item.Nome</td>
+               <td>@item.CPF</td>
                <td>@item.Email</td>
                <th>@item.Senha</th>
-               <td>@item.CPF</td>
             </tr>
          }
     </table>

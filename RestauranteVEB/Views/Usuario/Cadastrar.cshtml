@@ -119,13 +119,7 @@
                     sucesso = false;
                 }
                 else {
-                    if (!validateEmail(Email)) {
-                        $("#erroEmail").html("Email no formato incorreto.");
-                        sucesso = false;
-                    }
-                    else {
-                        $("#erroEmail").html("");
-                    }
+                    $("#erroEmail").html("");
                 }
 
                 if (Senha == "") {
