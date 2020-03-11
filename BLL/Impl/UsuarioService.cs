@@ -67,7 +67,6 @@ namespace BLL.Impl
             }
             else
             {
-                item.CPF = EXT.NormatizarCPF(item.CPF);
                 if (item.CPF.Length != 14)
                 {
                     response.Erros.Add("O CPF deve conter 14 caracteres.");

@@ -67,7 +67,7 @@ namespace RestauranteVEB.Controllers
 
                 DataResponse<UsuarioQueryViewModel> dados = mapper.Map<DataResponse<UsuarioQueryViewModel>>(usuarios);
 
-                return View(dados);
+                return View(dados.Data);
             }
             catch (Exception)
             {
