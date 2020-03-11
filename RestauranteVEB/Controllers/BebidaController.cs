@@ -10,13 +10,13 @@ using RestauranteVEB.Models;
 
 namespace RestauranteVEB.Controllers
 {
-    public class RefeicaoController : Controller
+    public class BebidaController : Controller
     {
-        private IRefeicaoService _refeicaoService;
+        private IBebidaService _bebidaService;
 
-        public RefeicaoController(IRefeicaoService refeicaoService)
+        public BebidaController(IBebidaService BebidaService)
         {
-            this._refeicaoService = refeicaoService;
+            this._bebidaService = BebidaService;
         }
 
         public async Task<IActionResult> Cadastrar()
@@ -25,21 +25,21 @@ namespace RestauranteVEB.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Cadastrar(RefeicaoViewModel refeicaoViewModel)
+        public async Task<IActionResult> Cadastrar(BebidaViewModel bebidaViewModel)
         {
             var configuration = new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<RefeicaoViewModel, RefeicaoDTO>();
+                cfg.CreateMap<BebidaViewModel, BebidaDTO>();
             });
             IMapper mapper = configuration.CreateMapper();
 
-            RefeicaoDTO dto = mapper.Map<RefeicaoDTO>(refeicaoViewModel);
+            BebidaDTO dto = mapper.Map<BebidaDTO>(bebidaViewModel);
 
             try
             {
-                await _refeicaoService.Insert(dto);
+                await _bebidaService.Insert(dto);
 
-                return RedirectToAction("Index", "Refeicao");
+                return RedirectToAction("Index", "Bebida");
             }
             catch (Exception ex)
             {
