@@ -14,6 +14,7 @@ namespace DAO.Mappings
             builder.ToTable("INGREDIENTES");
 
             builder.Property(i => i.Nome).HasMaxLength(50).IsRequired().IsUnicode(false);
+            builder.HasIndex(i => i.Nome).IsUnique(true);
             builder.Property(i => i.Quantidade).HasColumnName("float").IsRequired();
 
         }
