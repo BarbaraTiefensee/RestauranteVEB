@@ -17,7 +17,6 @@ namespace RestauranteVEB.Controllers
         private IRefeicaoService _refeicaoService;
         private IBebidaService _BebidaService;
 
-
         public PedidoController(IPedidoService pedidoService, IRefeicaoService refeicaoService, IBebidaService bebidaService)
         {
             this._pedidoService = pedidoService;
@@ -71,9 +70,26 @@ namespace RestauranteVEB.Controllers
             return View();
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            try
+            {
+                DataResponse<PedidoDTO> pedidos = await _pedidoService.GetData();
+
+                var configuration = new MapperConfiguration(cfg =>
+                {
+                    cfg.CreateMap<PedidoDTO, PedidoQueryViewModel>();
+                });
+                IMapper mapper = configuration.CreateMapper();
+
+                List<PedidoQueryViewModel> dados = mapper.Map<List<PedidoQueryViewModel>>(pedidos.Data);
+
+                return View(dados);
+            }
+            catch (Exception)
+            {
+                return View();
+            }
         }
     }
 }

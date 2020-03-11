@@ -50,9 +50,26 @@ namespace RestauranteVEB.Controllers
             return View();
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            try
+            {
+                DataResponse<BebidaDTO> bebidas = await _bebidaService.GetData();
+
+                var configuration = new MapperConfiguration(cfg =>
+                {
+                    cfg.CreateMap<BebidaDTO, BebidaQueryViewModel>();
+                });
+                IMapper mapper = configuration.CreateMapper();
+
+                List<BebidaQueryViewModel> dados = mapper.Map<List<BebidaQueryViewModel>>(bebidas.Data);
+
+                return View(dados);
+            }
+            catch (Exception)
+            {
+                return View();
+            }
         }
     }
 }

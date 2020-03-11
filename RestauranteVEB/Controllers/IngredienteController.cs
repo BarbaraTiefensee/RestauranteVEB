@@ -49,9 +49,26 @@ namespace RestauranteVEB.Controllers
             return View();
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            try
+            {
+                DataResponse<IngredienteDTO> ingredientes = await _ingredienteService.GetData();
+
+                var configuration = new MapperConfiguration(cfg =>
+                {
+                    cfg.CreateMap<IngredienteDTO, IngredienteQueryViewModel>();
+                });
+                IMapper mapper = configuration.CreateMapper();
+
+                List<IngredienteQueryViewModel> dados = mapper.Map<List<IngredienteQueryViewModel>>(ingredientes.Data);
+
+                return View(dados);
+            }
+            catch (Exception)
+            {
+                return View();
+            }
         }
     }
 }
