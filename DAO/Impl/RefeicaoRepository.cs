@@ -1,8 +1,8 @@
 ﻿using DAO.Interfaces;
 using DTO;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -38,11 +38,17 @@ namespace DAO.Impl
                 response.Sucesso = false;
                 return response;
             }
+            try
+            {
+                var teste = await this._context.Refeicoes.ToListAsync();
+                response.Data = teste;
+                return response;
 
-            await this._context.Pedidos.ToListAsync();
-            return response;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
-
-        
     }
 }

@@ -37,8 +37,8 @@ namespace RestauranteVEB.Controllers
             });
             IMapper mapper = configuration.CreateMapper();
 
-            List<RefeicaoQueryViewModel> dadosRefeiceos = mapper.Map<List<RefeicaoQueryViewModel>>(refeicoes);
-            List<BebidaQueryViewModel> dadosBebidas = mapper.Map<List<BebidaQueryViewModel>>(bebidas);
+            List<RefeicaoQueryViewModel> dadosRefeiceos = mapper.Map<List<RefeicaoQueryViewModel>>(refeicoes.Data);
+            List<BebidaQueryViewModel> dadosBebidas = mapper.Map<List<BebidaQueryViewModel>>(bebidas.Data);
 
             ViewBag.Refeicoes = dadosRefeiceos;
             ViewBag.Bebidas = dadosBebidas;
