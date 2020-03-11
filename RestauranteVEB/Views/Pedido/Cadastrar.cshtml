@@ -4,47 +4,9 @@
 }
 
 <h1>Fazer Pedido</h1>
-
 <br />
 
-
 <body class="bg-transparent">
-
-
-    @{
-        string[] refeicao = Enum.GetNames(typeof(DTO.Enums.Refeicao));
-    }
-    <div class="form-group">
-        <label class="control-label col-md-2">Refeição</label>
-        <div class="col-md-10">
-            <select name="Refeicao" id="Refeicao" class="form-control">
-                @for (int i = 0; i < refeicao.Length; i++)
-                {
-                    <option value="@i">@refeicao[i]</option>
-                }
-            </select>
-            <span id="erroRefeicao" name="erroRefeicao" class="text-danger"></span><br />
-        </div>
-    </div>
-
-    @{
-        string[] bebida = Enum.GetNames(typeof(DTO.Enums.Bebida));
-    }
-
-    <div class="form-group">
-        <label class="control-label col-md-2">Bebida</label>
-        <div class="col-md-10">
-            <select name="Bebida" id="Bebida" class="form-control">
-                @for (int i = 0; i < bebida.Length; i++)
-                {
-                    <option value="@i">@bebida[i]</option>
-                }
-            </select>
-            <input class="btn-dark" type="button" name="AddBebida" id="AddBebida" value="" />
-            <span id="erroBebida" name="erroBebida" class="text-danger"></span><br />
-        </div>
-    </div>
-
 
     <div class="form-group">
         <label class="control-label col-md-2"></label>
@@ -54,7 +16,6 @@
                     <th>Id</th>
                     <th>Item</th>
                     <th>Preco</th>
-
                 </tr>
             </thead>
 

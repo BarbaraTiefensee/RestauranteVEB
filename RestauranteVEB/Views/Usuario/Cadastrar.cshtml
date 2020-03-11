@@ -73,6 +73,9 @@
 
         $(document).ready(function () {
 
+            var cpfMask = $("#CPF");
+            cpfMask.mask('000.000.000-00', { reverse: false });
+
             $("#BotaoEnviar").click(function (e) {
 
                 var sucesso = true;
@@ -86,7 +89,8 @@
                     $("#erroNome").html("O nome deve ser informado.");
                     sucesso = false;
                 }
-                else {
+                else
+                {
                     if (Nome.length < 5 || Nome.length > 50) {
                         $("#erroNome").html("O nome deve conter no mínimo 5 a 50 caracteres.");
                         sucesso = false;
@@ -101,7 +105,7 @@
                     sucesso = false;
                 }
                 else {
-                    if (!validateCPF(CPF)) {
+                    if (CPF.length != 14) {
                         $("#erroCPF").html("O CPF deve conter 14 caracteres.");
                         sucesso = false;
                     }
@@ -152,7 +156,6 @@
                     e.preventDefault();
                 }
             });
-        });
 
         $("#BotaoLimpar").click(function () {
             $("#Nome").val("");
@@ -160,6 +163,8 @@
             $("#Email").val("");
             $("#Senha").val("");
             $("#ConfirmarSenha").val("");
+        });
+
         });
 
     </script>
