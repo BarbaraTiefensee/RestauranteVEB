@@ -17,7 +17,6 @@ namespace RestauranteVEB.Controllers
         private IRefeicaoService _refeicaoService;
         private IBebidaService _BebidaService;
 
-
         public PedidoController(IPedidoService pedidoService, IRefeicaoService refeicaoService, IBebidaService bebidaService)
         {
             this._pedidoService = pedidoService;

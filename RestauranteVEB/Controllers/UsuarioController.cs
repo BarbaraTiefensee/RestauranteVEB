@@ -65,9 +65,9 @@ namespace RestauranteVEB.Controllers
                 });
                 IMapper mapper = configuration.CreateMapper();
 
-                DataResponse<UsuarioQueryViewModel> dados = mapper.Map<DataResponse<UsuarioQueryViewModel>>(usuarios);
+                List<UsuarioQueryViewModel> dados = mapper.Map<List<UsuarioQueryViewModel>>(usuarios.Data);
 
-                return View(dados.Data);
+                return View(dados);
             }
             catch (Exception)
             {
