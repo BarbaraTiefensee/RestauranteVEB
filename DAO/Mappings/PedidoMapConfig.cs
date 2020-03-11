@@ -13,8 +13,16 @@ namespace DAO.Mappings
         {
             builder.ToTable("PEDIDOS");
 
-            builder.Property(p => p.NomeNoPedido).IsRequired().IsUnicode(false).HasMaxLength(50);
-            
+            builder.Property(p => p.NomeNoPedido)
+                .IsRequired().
+                IsUnicode(false)
+                .HasMaxLength(50);
+
+            builder.HasOne(p => p.Bebida).
+                WithMany().OnDelete(DeleteBehavior.Cascade);
+
+            builder.HasOne(p => p.Refeicao).
+                WithMany().OnDelete(DeleteBehavior.Cascade);
         }
     }
 }
