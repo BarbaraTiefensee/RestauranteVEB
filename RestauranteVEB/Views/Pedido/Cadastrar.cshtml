@@ -9,7 +9,20 @@
 <body class="bg-transparent">
 
     <div class="form-group">
-        <label class="control-label col-md-2">Categorias</label>
+        <label class="control-label col-md-2">Refeções</label>
+        <div class="col-md-10">
+            <select name="RefeicaoID" id="RefeicaoID" class="form-control">
+                @foreach (var item in ViewBag.Refeicoes)
+                {
+                    <option value="@item.ID">@item.Nome</option>
+                }
+            </select>
+            <span id="erroRefeicao" name="erroRefeicao" class="text-danger"></span><br />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Bebidas</label>
         <div class="col-md-10">
             <select name="BebidaID" id="BebidaID" class="form-control">
                 @foreach (var item in ViewBag.Bebidas)
@@ -17,7 +30,7 @@
                     <option value="@item.ID">@item.Nome</option>
                 }
             </select>
-            <span id="erroCategoria" name="erroCategoria" class="text-danger"></span><br />
+            <span id="erroBebida" name="erroBebida" class="text-danger"></span><br />
         </div>
     </div>
 

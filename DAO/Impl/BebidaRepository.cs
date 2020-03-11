@@ -38,9 +38,18 @@ namespace DAO.Impl
                 response.Sucesso = false;
                 return response;
             }
+            try
+            {
+                var teste = await this._context.Bebidas.ToListAsync();
+                response.Data = teste;
+                return response;
 
-            await this._context.Bebidas.ToListAsync();
-            return response;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            
         }
 
     }
