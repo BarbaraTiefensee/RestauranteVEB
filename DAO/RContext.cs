@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
+using System.Linq;
 
 namespace DAO
 {
@@ -26,6 +27,7 @@ namespace DAO
             //modelBuilder.Entity<string>().Property(s => s.IsNormalized()).IsRequired().IsUnicode(false).HasColumnType("varchar");
 
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+
 
             base.OnModelCreating(modelBuilder);
         }
