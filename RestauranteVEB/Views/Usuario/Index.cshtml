@@ -12,7 +12,6 @@
             <th>Nome</th>
             <th>CPF</th>
             <th>Email</th>
-            <th>Senha</th>
         </tr>
 
         @foreach (RestauranteVEB.Models.UsuarioQueryViewModel item in Model)
@@ -22,7 +21,6 @@
                <td>@item.Nome</td>
                <td>@item.CPF</td>
                <td>@item.Email</td>
-               <th>@item.Senha</th>
             </tr>
          }
     </table>
