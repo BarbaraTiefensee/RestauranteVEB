@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
 using BLL.Impl;
 using BLL.Interfaces;
 using DTO;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using RestauranteVEB.Models;
@@ -80,27 +83,30 @@ namespace RestauranteVEB.Controllers
             return View();
         }
 
-        /*
+        
         [HttpPost]
         public async Task<ActionResult> Login(string email, string senha)
         {
-            try
+            if (await _userService.Autententicar(email, senha) != null)
             {
-                UsuarioDTO usuario = await _userService.Autententicar(email, senha);
-
-                HttpCookie cookie = new HttpCookie("USERIDENTITY", usuario.ID.ToString());
-                cookie.Expires = DateTime.MaxValue;
-
-                Response.Cookies.Add(cookie);
-                return RedirectToAction("Index", "Cliente");
+                var claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.Name, email)
+                };
+                var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                var principal = new ClaimsPrincipal(identity);
+                var props = new AuthenticationProperties();
+                HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal, props).Wait();
+                ViewBag.UsuarioLogado = true;
+                return RedirectToAction("Index", "Home");
             }
-            catch (Exception ex)
+            else
             {
-                ViewBag.Erros = ex.Message;
+                return View();
             }
 
-            return View();
+            
         }
-        */
+        
     }
 }

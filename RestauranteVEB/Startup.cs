@@ -7,6 +7,7 @@ using BLL.Interfaces;
 using DAO;
 using DAO.Impl;
 using DAO.Interfaces;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -51,6 +52,15 @@ namespace RestauranteVEB
 
             //Adicionando todas configurações.
             services.AddControllersWithViews();
+
+            //COOKIES   
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+            .AddCookie(options =>
+            {
+                options.LoginPath = "/Usuario/Login";
+                options.LogoutPath = "/Usuario/LogOff";
+                options.Cookie.Name = "AshProgHelpCookie";
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -71,7 +81,11 @@ namespace RestauranteVEB
 
             app.UseRouting();
 
+            //COOKIES
+            app.UseAuthentication();
             app.UseAuthorization();
+            app.UseCookiePolicy();
+           
 
             app.UseEndpoints(endpoints =>
             {
