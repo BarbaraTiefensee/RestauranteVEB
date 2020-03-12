@@ -28,20 +28,6 @@ namespace DAO
 
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
-            //MANY TO MANY
-            modelBuilder.Entity<PedidoDTO>()
-           .HasOne(pt => pt.Bebida)
-           .WithMany(pt => pt.PedidoCollection)
-           .HasForeignKey(pt => pt.BebidaID)
-           .OnDelete(DeleteBehavior.Cascade);
-
-            modelBuilder.Entity<PedidoDTO>()
-           .HasOne(pt => pt.Refeicao)
-           .WithMany(pt => pt.PedidoCollection)
-           .HasForeignKey(pt => pt.RefeicaoID)
-           .OnDelete(DeleteBehavior.Cascade);
-
-            base.OnModelCreating(modelBuilder);
         }
     }
 }

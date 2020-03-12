@@ -18,17 +18,7 @@ namespace DAO.Mappings
                 IsUnicode(false)
                 .HasMaxLength(50);
 
-            builder.HasMany(C => C.Bebidas).WithOne(C => C.Pedido).HasForeignKey(C => C.BebidaID);
-
-            //builder.HasIndex(p => p.BebidaID).
-             //   WithMany().OnDelete(DeleteBehavior.Cascade);
-
-           // builder.HasOne(p => p.Refeicao).
-            //    WithMany(P => P.ID).OnDelete(DeleteBehavior.Cascade);
-
-           // builder.HasOne(e => e.Refeicao)
-          //  .WithMany().Metadata.DeleteBehavior = DeleteBehavior.Restrict;
-            //TODO: PESQUISAR SOBRE O DELETE
+            builder.HasMany(p => p.Refeicoes).WithOne(p => p.Pedido).HasForeignKey(p => p.RefeicaoID).OnDelete(DeleteBehavior.Restrict);
         }
     }
 }
