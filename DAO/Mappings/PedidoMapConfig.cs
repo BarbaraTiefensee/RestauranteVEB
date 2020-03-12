@@ -18,6 +18,8 @@ namespace DAO.Mappings
                 IsUnicode(false)
                 .HasMaxLength(50);
 
+            builder.HasMany(C => C.Bebidas).WithOne(C => C.Pedido).HasForeignKey(C => C.BebidaID);
+
             //builder.HasIndex(p => p.BebidaID).
              //   WithMany().OnDelete(DeleteBehavior.Cascade);
 

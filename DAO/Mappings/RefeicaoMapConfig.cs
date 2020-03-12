@@ -16,6 +16,9 @@ namespace DAO.Mappings
             builder.Property(r => r.Nome).IsRequired().IsUnicode(false).HasMaxLength(50);
             builder.Property(r => r.Preco).IsRequired().IsUnicode(false);
 
+            builder.HasMany(r => r.Ingredientes)
+                   .WithOne(r => r.Refeicao)
+                   .HasForeignKey(r => r.IngredienteID).OnDelete(DeleteBehavior.Restrict);
         }
     }
 }
