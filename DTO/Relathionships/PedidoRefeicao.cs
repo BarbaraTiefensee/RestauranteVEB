@@ -10,6 +10,6 @@ namespace DTO
         public virtual PedidoDTO Pedido { get; set; }
 
         public int RefeicaoID { get; set; }
-        public virtual RefeicaoDTO Bebida { get; set; }
+        public virtual RefeicaoDTO Refeicao { get; set; }
     }
 }
