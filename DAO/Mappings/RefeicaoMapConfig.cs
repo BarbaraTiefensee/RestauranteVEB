@@ -13,6 +13,8 @@ namespace DAO.Mappings
         {
             builder.ToTable("REFEICOES");
 
+           // builder.HasNoKey();
+
             builder.Property(r => r.Nome).IsRequired().IsUnicode(false).HasMaxLength(50);
             builder.Property(r => r.Preco).IsRequired().IsUnicode(false);
 

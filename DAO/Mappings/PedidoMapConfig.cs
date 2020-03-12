@@ -12,6 +12,7 @@ namespace DAO.Mappings
         public void Configure(EntityTypeBuilder<PedidoDTO> builder)
         {
             builder.ToTable("PEDIDOS");
+            //builder.HasNoKey();
 
             builder.Property(p => p.NomeNoPedido)
                 .IsRequired().
