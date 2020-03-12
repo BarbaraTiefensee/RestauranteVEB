@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DAO.Migrations
 {
     [DbContext(typeof(RContext))]
-    [Migration("20200312192845_qualquermerda.cs")]
-    partial class qualquermerdacs
+    [Migration("20200312195011_TESTE")]
+    partial class TESTE
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

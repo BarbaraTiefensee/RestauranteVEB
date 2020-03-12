@@ -27,7 +27,15 @@ namespace DAO.Impl
             }
 
             this._context.Usuarios.Add(usuario);
-            await this._context.SaveChangesAsync();
+            try
+            {
+                await this._context.SaveChangesAsync();
+
+            }
+            catch (Exception ex)
+            {
+                response.Erros.Add("se vira pco" + ex.Message);
+            }
 
             return response;
         }
