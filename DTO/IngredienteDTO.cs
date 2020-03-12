@@ -9,11 +9,11 @@ namespace DTO
         public int ID { get; set; }
         public string Nome { get; set; }
         public int Quantidade { get; set; }
-        public List<IngredienteDTO> Ingredientes { get; set; }
+        public virtual ICollection<IngredienteDTO> IngredienteCollection { get; set; }
 
         public IngredienteDTO()
         {
-            this.Ingredientes = new List<IngredienteDTO>();
+            this.IngredienteCollection = new List<IngredienteDTO>();
         }
     }
 }
