@@ -7,7 +7,7 @@ using System.Text;
 
 namespace DAO.Mappings
 {
-    public class BebdidaMapConfig : IEntityTypeConfiguration<BebidaDTO>
+    public class BebidaMapConfig : IEntityTypeConfiguration<BebidaDTO>
     {
         public void Configure(EntityTypeBuilder<BebidaDTO> builder)
         {
@@ -15,7 +15,6 @@ namespace DAO.Mappings
 
             builder.Property(b => b.Nome).HasMaxLength(50).IsRequired().IsUnicode();
             builder.Property(b => b.Preco).IsRequired().IsUnicode();
-
         }
     }
 }

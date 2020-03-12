@@ -19,6 +19,7 @@ namespace DAO.Mappings
                 .HasMaxLength(50);
 
             builder.HasMany(p => p.Refeicoes).WithOne(p => p.Pedido).HasForeignKey(p => p.RefeicaoID).OnDelete(DeleteBehavior.Restrict);
+            builder.HasMany(p => p.Bebidas).WithOne(p => p.Pedido).HasForeignKey(p => p.BebidaID).OnDelete(DeleteBehavior.Restrict);
         }
     }
 }
