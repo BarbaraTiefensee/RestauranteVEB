@@ -18,12 +18,14 @@ namespace DAO.Mappings
                 IsUnicode(false)
                 .HasMaxLength(50);
 
-           // builder.HasOne(p => p.BebidaID).WithMany().OnDelete(DeleteBehavior.Cascade);
+            //builder.HasIndex(p => p.BebidaID).
+             //   WithMany().OnDelete(DeleteBehavior.Cascade);
 
            // builder.HasOne(p => p.Refeicao).
             //    WithMany(P => P.ID).OnDelete(DeleteBehavior.Cascade);
 
-            //builder.HasOne(e => e.Refeicao.WithMany().Metadata.DeleteBehavior = DeleteBehavior.Restrict;
+           // builder.HasOne(e => e.Refeicao)
+          //  .WithMany().Metadata.DeleteBehavior = DeleteBehavior.Restrict;
             //TODO: PESQUISAR SOBRE O DELETE
         }
     }
