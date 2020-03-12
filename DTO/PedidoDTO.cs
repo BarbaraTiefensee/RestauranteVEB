@@ -20,7 +20,6 @@ namespace DTO
         {
             this.RefeicoesCollection = new List<RefeicaoDTO>();
             this.BebidasCollection = new List<BebidaDTO>();
-
         }
     }
 }
