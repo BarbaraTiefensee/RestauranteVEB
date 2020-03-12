@@ -11,7 +11,5 @@ namespace DTO
 
         public int BebidaID { get; set; }
         public virtual BebidaDTO Bebida{ get; set; }
-
-
     }
 }

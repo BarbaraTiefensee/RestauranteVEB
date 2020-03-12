@@ -10,12 +10,12 @@ namespace DTO
         public int ID { get; set; }
         public string NomeNoPedido { get; set; }
        
-        public virtual ICollection<RefeicaoDTO> RefeicoesCollection { get; set; }
+        public virtual ICollection<PedidoRefeicao> Refeicoes { get; set; }
         public virtual ICollection<PedidoBebida> Bebidas { get; set; }
 
         public PedidoDTO()
         {
-            this.RefeicoesCollection = new List<RefeicaoDTO>();
+            this.Refeicoes = new List<PedidoRefeicao>();
             this.Bebidas = new List<PedidoBebida>();
         }
     }
