@@ -15,15 +15,11 @@ namespace DAO
 
         }
 
-        
         public DbSet<IngredienteDTO> Ingredientes { get; set; }
         public DbSet<PedidoDTO> Pedidos { get; set; }
         public DbSet<UsuarioDTO> Usuarios { get; set; }
         public DbSet<RefeicaoDTO> Refeicoes { get; set; }
         public DbSet<BebidaDTO> Bebidas { get; set; }
-
-
-
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
