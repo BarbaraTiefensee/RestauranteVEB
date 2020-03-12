@@ -10,7 +10,9 @@ namespace DTO
         public int ID { get; set; }
         public string NomeNoPedido { get; set; }
         public int RefeicaoID { get; set; }
+        public virtual RefeicaoDTO Refeicao { get; set; }
         public int BebidaID { get; set; }
+        public virtual BebidaDTO Bebida { get; set; }
 
         public virtual ICollection<RefeicaoDTO> RefeicoesCollection { get; set; }
         public virtual ICollection<BebidaDTO> BebidasCollection { get; set; }
