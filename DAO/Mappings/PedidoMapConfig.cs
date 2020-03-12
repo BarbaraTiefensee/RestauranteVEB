@@ -21,8 +21,12 @@ namespace DAO.Mappings
             builder.HasOne(p => p.Bebida).
                 WithMany().OnDelete(DeleteBehavior.Cascade);
 
-            builder.HasOne(p => p.Refeicao).
-                WithMany().OnDelete(DeleteBehavior.Cascade);
+           // builder.HasOne(p => p.Refeicao).
+            //    WithMany(P => P.ID).OnDelete(DeleteBehavior.Cascade);
+
+            builder.HasOne(e => e.Refeicao)
+            .WithMany().Metadata.DeleteBehavior = DeleteBehavior.Restrict;
+            //TODO: PESQUISAR SOBRE O DELETE
         }
     }
 }
