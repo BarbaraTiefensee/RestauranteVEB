@@ -85,7 +85,7 @@
                 var selected = $("#BebidaID").find('option:selected');
 
                 var id = $("#BebidaID").val();
-                var nome = $("#BebidaID").text();
+                var nome = $("#BebidaID").find('option:selected').text();
                 var preco = selected.data("preco");
 
                 table.row.add([
@@ -98,7 +98,7 @@
                 var selected = $("#RefeicaoID").find('option:selected');
 
                 var id = $("#RefeicaoID").val();
-                var nome = $("#RefeicaoID").text();
+                var nome = $("#RefeicaoID").find('option:selected').text();
                 var preco = selected.data("preco");
 
                 table.row.add([
