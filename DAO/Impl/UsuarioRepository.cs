@@ -49,6 +49,7 @@ namespace DAO.Impl
                 response.Sucesso = false;
                 return response;
             }
+
             try
             {
                 var teste = await this._context.Usuarios.ToListAsync();
