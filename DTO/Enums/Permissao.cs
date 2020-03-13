@@ -7,7 +7,6 @@ namespace DTO.Enums
     public enum Permissao
     {
         Funcionario,
-        Adiministrador,
-        Caixa
+        Adiministrador
     }
 }

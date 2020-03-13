@@ -18,12 +18,12 @@ using RestSharp;
 namespace RestauranteVEB.Controllers
 {
     public class UsuarioController : Controller
-    { 
+    {
         private IUsuarioService _userService;
 
         public UsuarioController(IUsuarioService userService)
         {
-             this._userService = userService;
+            this._userService = userService;
         }
 
         public async Task<IActionResult> Cadastrar()
@@ -83,30 +83,33 @@ namespace RestauranteVEB.Controllers
             return View();
         }
 
-        
+
         [HttpPost]
         public async Task<ActionResult> Login(string email, string senha)
         {
-            if (await _userService.Autententicar(email, senha) != null)
+
+            try
             {
+                await _userService.Autententicar(email, senha);
+
                 var claims = new List<Claim>
                 {
                     new Claim(ClaimTypes.Name, email)
                 };
+
                 var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                 var principal = new ClaimsPrincipal(identity);
                 var props = new AuthenticationProperties();
                 HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal, props).Wait();
                 ViewBag.UsuarioLogado = true;
+
                 return RedirectToAction("Index", "Home");
             }
-            else
+            catch (Exception ex)
             {
+                ViewBag.ErrorMessage = ex.Message;
                 return View();
             }
-
-            
         }
-        
     }
 }

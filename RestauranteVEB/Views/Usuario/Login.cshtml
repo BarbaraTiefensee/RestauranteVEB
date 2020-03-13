@@ -31,6 +31,7 @@
             <div class="form-label-group">
                 <input type="password" name="Senha" id="Senha" class="form-control" placeholder="Senha">
                 <span id="erroSenha" name="erroSenha" class="text-danger"></span><br />
+                <span class="text-danger">@ViewBag.ErrorMessage</span><br />
             </div>
         </div>
 
@@ -44,8 +45,6 @@
     </form>
 </body>
 </html>
-
-
 
 @section scripts{
 

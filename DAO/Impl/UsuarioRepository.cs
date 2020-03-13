@@ -29,8 +29,8 @@ namespace DAO.Impl
             this._context.Usuarios.Add(usuario);
             try
             {
+                this._context.Usuarios.Add(usuario);
                 await this._context.SaveChangesAsync();
-
             }
             catch (Exception ex)
             {
@@ -49,6 +49,7 @@ namespace DAO.Impl
                 response.Sucesso = false;
                 return response;
             }
+
             try
             {
                 var teste = await this._context.Usuarios.ToListAsync();
