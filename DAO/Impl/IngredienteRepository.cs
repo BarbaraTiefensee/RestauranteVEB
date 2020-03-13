@@ -52,8 +52,7 @@ namespace DAO.Impl
             {
                 throw;
             }
-            await this._context.Ingredientes.ToListAsync();
-            return response;
+            
         }
     }
 }
