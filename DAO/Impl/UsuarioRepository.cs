@@ -29,8 +29,8 @@ namespace DAO.Impl
             this._context.Usuarios.Add(usuario);
             try
             {
+                this._context.Usuarios.Add(usuario);
                 await this._context.SaveChangesAsync();
-
             }
             catch (Exception ex)
             {
