@@ -9,12 +9,12 @@
 <body class="bg-transparent">
 
     <div class="form-group">
-        <label class="control-label col-md-2">Refeções</label>
+        <label class="control-label col-md-2">Refeições</label>
         <div class="col-md-10">
             <select name="RefeicaoID" id="RefeicaoID" class="form-control">
                 @foreach (var item in ViewBag.Refeicoes)
                 {
-                    <option value="@item.ID">@item.Nome</option>
+                    <option data-preco="@item.Preco" value="@item.ID">@item.Nome</option>
                 }
             </select>
             <span id="erroRefeicao" name="erroRefeicao" class="text-danger"></span><br />
@@ -27,7 +27,7 @@
             <select name="BebidaID" id="BebidaID" class="form-control">
                 @foreach (var item in ViewBag.Bebidas)
                 {
-                    <option value="@item.ID">@item.Nome</option>
+                    <option data-preco="@item.Preco" value="@item.ID">@item.Nome</option>
                 }
             </select>
             <span id="erroBebida" name="erroBebida" class="text-danger"></span><br />
@@ -36,7 +36,7 @@
 
     <div class="form-group">
         <label class="control-label col-md-2"></label>
-        <table id="Nota" name="Nota" class="display">
+        <table id="Nota" name="Nota" class="table dataTable">
             <thead>
                 <tr>
                     <th>Id</th>
@@ -46,8 +46,6 @@
             </thead>
 
             <tbody>
-                <tr>
-                </tr>
             </tbody>
         </table>
 
@@ -56,35 +54,64 @@
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" value="Finalizar" class="btn btn-default" id="BotaoFinalizar" name="BotaoFinalizar" />
+            <input type="button" value="Adicionar Bebida" class="btn btn-default" id="AddBebida" name="AddBebida" />
+            <input type="button" value="Adicionar Refeição" class="btn btn-default" id="AddRefeicao" name="AddRefeicao" />
+
         </div>
     </div>
 
 </body>
 
 @section scripts{
-
+    <script src="~/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function (e) {
 
-
-            //var table = $('#Nota').DataTable();
+            var table = $('#Nota').DataTable(
+                {
+                    columns: [
+                        //"dummy" configuration
+                        { visible: true }, //col 1
+                        { visible: true }, //col 2
+                        { visible: true }, //col 3
+                    ],
+                    "paging": false,
+                    "ordering": false,
+                    "info": false,
+                });
 
             $("#AddBebida").click(function (e) {
-                console.log($("#Bebida"));
 
-                //var valorBebida = parseInt($("#Bebida").val());
-                //valorBebida++;
+                var selected = $("#BebidaID").find('option:selected');
 
+                var id = $("#BebidaID").val();
+                var nome = $("#BebidaID").find('option:selected').text();
+                var preco = selected.data("preco");
 
-                //table.row.add([
-                //    counter + '.1',
-                //    counter + '.2',
-                //    counter + '.3',
-                //    counter + '.4',
-                //    counter + '.5'
-                //]).draw(false);
+                table.row.add([
+                    id, nome, preco
+                ]).draw(false);
             });
 
+            $("#AddRefeicao").click(function (e) {
+
+                var selected = $("#RefeicaoID").find('option:selected');
+
+                var id = $("#RefeicaoID").val();
+                var nome = $("#RefeicaoID").find('option:selected').text();
+                var preco = selected.data("preco");
+
+                table.row.add([
+                    id, nome, preco
+                ]).draw(false);
+            });
+
+
+            $("#Finalizar").click(function (e) {
+
+
+
+            });
         });
     </script>
 
