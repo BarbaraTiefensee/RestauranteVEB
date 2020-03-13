@@ -1,5 +1,6 @@
 ﻿using DAO.Interfaces;
 using DTO;
+using DTO.Enums;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -62,9 +63,9 @@ namespace DAO.Impl
             }
         }
 
-        public async Task<UsuarioDTO> Autententicar(string email, string password)
+        public async Task<UsuarioDTO> Autententicar(UsuarioDTO usuario)
         {
-            UsuarioDTO usuario = await _context.Usuarios.FirstOrDefaultAsync(u => u.Email.Equals(email) && u.Senha.Equals(password)).ConfigureAwait(false);
+            usuario = await _context.Usuarios.FirstOrDefaultAsync(u => u.Email.Equals(usuario.Email) && u.Senha.Equals(usuario.Senha)).ConfigureAwait(false);
 
             if (usuario == null)
             {

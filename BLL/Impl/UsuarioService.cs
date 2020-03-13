@@ -1,6 +1,7 @@
 ﻿using BLL.Interfaces;
 using DAO.Interfaces;
 using DTO;
+using DTO.Enums;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -35,9 +36,9 @@ namespace BLL.Impl
             return await _usuarioRepository.GetData();
         }
 
-        public async Task<UsuarioDTO> Autententicar(string email, string password)
+        public async Task<UsuarioDTO> Autententicar(UsuarioDTO usuario)
         {
-            return await _usuarioRepository.Autententicar(email, password);
+            return await _usuarioRepository.Autententicar(usuario);
         }
 
         private Response Validate(UsuarioDTO item)

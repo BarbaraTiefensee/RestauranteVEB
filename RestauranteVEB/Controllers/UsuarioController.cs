@@ -8,6 +8,7 @@ using AutoMapper;
 using BLL.Impl;
 using BLL.Interfaces;
 using DTO;
+using DTO.Enums;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
@@ -85,16 +86,23 @@ namespace RestauranteVEB.Controllers
 
 
         [HttpPost]
-        public async Task<ActionResult> Login(string email, string senha)
+        public async Task<ActionResult> Login(UsuarioViewModel usuario)
         {
-
             try
             {
-                await _userService.Autententicar(email, senha);
+                var configuration = new MapperConfiguration(cfg =>
+                {
+                    cfg.CreateMap<UsuarioViewModel, UsuarioDTO>();
+                });
+                IMapper mapper = configuration.CreateMapper();
+
+                UsuarioDTO usuarioDTO = mapper.Map<UsuarioDTO>(usuario);
+
+                await _userService.Autententicar(usuarioDTO);
 
                 var claims = new List<Claim>
                 {
-                    new Claim(ClaimTypes.Name, email)
+                    new Claim(ClaimTypes.Name, usuario.Email)
                 };
 
                 var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
