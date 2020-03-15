@@ -3,34 +3,34 @@
     ViewData["Title"] = "Cadastrar";
 }
 
-<h1>Fazer Pedido</h1>
+<h1 class="text-center">Fazer Pedido</h1>
 <br />
 
 <body class="bg-transparent">
 
-    <div class="form-group">
-        <label class="control-label col-md-2">Refeições</label>
-        <div class="col-md-10">
-            <select name="RefeicaoID" id="RefeicaoID" class="form-control">
-                @foreach (var item in ViewBag.Refeicoes)
-                {
-                    <option data-preco="@item.Preco" value="@item.ID">@item.Nome</option>
-                }
-            </select>
-            <span id="erroRefeicao" name="erroRefeicao" class="text-danger"></span><br />
-        </div>
-    </div>
 
-    <div class="form-group">
-        <label class="control-label col-md-2">Bebidas</label>
-        <div class="col-md-10">
-            <select name="BebidaID" id="BebidaID" class="form-control">
-                @foreach (var item in ViewBag.Bebidas)
-                {
-                    <option data-preco="@item.Preco" value="@item.ID">@item.Nome</option>
-                }
-            </select>
-            <span id="erroBebida" name="erroBebida" class="text-danger"></span><br />
+    <div class="container">
+        <div class="row">
+            <div class="form-group col-sm">
+                <label class="control-label">Refeições</label>
+                <select name="RefeicaoID" id="RefeicaoID" class="form-control">
+                    @foreach (var item in ViewBag.Refeicoes)
+                    {
+                        <option data-preco="@item.Preco" value="@item.ID">@item.Nome</option>
+                    }
+                </select>
+                <span id="erroRefeicao" name="erroRefeicao" class="text-danger"></span><br />
+            </div>
+            <div class="form-group col-sm">
+                <label class="control-label">Bebidas</label>
+                <select name="BebidaID" id="BebidaID" class="form-control">
+                    @foreach (var item in ViewBag.Bebidas)
+                    {
+                        <option data-preco="@item.Preco" value="@item.ID">@item.Nome</option>
+                    }
+                </select>
+                <span id="erroBebida" name="erroBebida" class="text-danger"></span><br />
+            </div>
         </div>
     </div>
 
@@ -69,6 +69,10 @@
 
             var table = $('#Nota').DataTable(
                 {
+                    language: {
+                        search: "Procurar",
+                        searchPlaceholder: "Nome do item"
+                    },
                     columns: [
                         //"dummy" configuration
                         { visible: true }, //col 1
@@ -116,3 +120,4 @@
     </script>
 
 }
+
