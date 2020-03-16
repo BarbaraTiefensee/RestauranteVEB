@@ -1,4 +1,5 @@
 ﻿using DTO;
+using DTO.Enums;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,6 +11,6 @@ namespace BLL.Interfaces
     {
         Task<Response> Insert(UsuarioDTO usuario);
         Task<DataResponse<UsuarioDTO>> GetData();
-        Task<UsuarioDTO> Autententicar(string email, string password);
+        Task<UsuarioDTO> Autententicar(UsuarioDTO usuario);
     }
 }

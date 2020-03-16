@@ -17,7 +17,7 @@ namespace RestauranteVEB.Controllers
 
             if (cookie != null)
             {
-                filterContext.Result = new RedirectResult(Url.Action("Login", "Uusario"));
+                filterContext.Result = new RedirectResult(Url.Action("Login", "Usuario"));
             }
 
             base.OnActionExecuting(filterContext);
