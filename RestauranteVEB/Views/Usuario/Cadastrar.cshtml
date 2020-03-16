@@ -4,7 +4,7 @@
 }
 
 <br />
-<h1>Cadastro de Usuário</h1>
+<h1 class="text-center">Cadastro de Usuário</h1>
 <br />
 
 <form method="post">
@@ -75,23 +75,28 @@
        </div>
    </div>
 
-    <div class="row">
-        @if (ViewBag.ErrorMessage != null)
-        {
-            <div class="form-group">
-                <div class="col-md-10">
-                    <span class="text-danger">@ViewBag.ErrorMessage</span>
-                </div>
-            </div>
-        }
+   <div class="row">
+       @if (ViewBag.MensagemErro != null)
+       {
+           <div class="form-group">
+               <div class="col-md-10">
+                   <span class="text-danger">@ViewBag.MensagemErro</span>
+               </div>
+           </div>
+       }
 
-        <div class="form-group col-sm">
-            <div class="col-md-offset-2">
-                <input type="submit" value="Cadastrar" class="btn btn-secondary btn-lg" id="BotaoEnviar" name="BotaoEnviar" />
-                <input type="button" value="Limpar" class="btn btn-secondary btn-lg" id="BotaoLimpar" name="BotaoLimpar" />
-            </div>
-        </div>
-    </div>
+       <div class="form-group col-sm text-right">
+           <div class="col-md-offset-2">
+               <input type="submit" value="Cadastrar" class="btn btn-secondary btn-lg" id="BotaoEnviar" name="BotaoEnviar" />
+           </div>
+       </div>
+
+       <div class="form-group col-sm text-lft">
+           <div class="col-md-offset-2">
+               <input type="button" value="Limpar" class="btn btn-secondary btn-lg" id="BotaoLimpar" name="BotaoLimpar" />
+           </div>
+       </div>
+   </div>
   
 </form>
 
