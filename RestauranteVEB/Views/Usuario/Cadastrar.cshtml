@@ -9,60 +9,71 @@
 
 <form method="post">
     <div class="form-group">
-        <label for="Nome">Nome</label>
-        <div class="form-label-group">
-            <input type="text" id="Nome" name="Nome" class="form-control">
-            <span id="erroNome" name="erroNome" class="text-danger"></span><br />
+        <div class="col-md-7">
+             <label for="Nome">Nome</label>
+             <div class="form-label-group">
+                  <input type="text" id="Nome" name="Nome" class="form-control">
+                  <span id="erroNome" name="erroNome" class="text-danger"></span><br />
+             </div>
         </div>
     </div>
 
     <div class="form-group">
-        <label for="CPF">CPF</label>
-        <div class="form-label-group">
-            <input type="text" id="CPF" name="CPF" class="form-control" placeholder="000.000.000-00">
-            <span id="erroCPF" name="erroCPF" class="text-danger"></span><br />
+        <div class="col-md-7">
+            <label for="CPF">CPF</label>
+            <div class="form-label-group">
+                <input type="text" id="CPF" name="CPF" class="form-control" placeholder="000.000.000-00">
+                <span id="erroCPF" name="erroCPF" class="text-danger"></span><br />
+            </div>
         </div>
     </div>
 
     <div class="form-group">
-        <label for="Email">Email</label>
-        <div class="form-label-group">
-            <input type="text" id="Email" name="Email" class="form-control">
-            <span id="erroEmail" name="erroEmail" class="text-danger"></span><br />
+        <div class="col-md-7">
+            <label for="Email">Email</label>
+            <div class="form-label-group">
+                <input type="text" id="Email" name="Email" class="form-control">
+                <span id="erroEmail" name="erroEmail" class="text-danger"></span><br />
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-7">
+            <label for="Senha">Senha</label>
+            <div class="form-label-group">
+                <input type="password" id="Senha" name="Senha" class="form-control">
+                <span id="erroSenha" name="erroSenha" class="text-danger"></span><br />
+            </div>
         </div>
     </div>
 
     <div class="form-group">
-        <label for="Senha">Senha</label>
-        <div class="form-label-group">
-            <input type="password" id="Senha" name="Senha" class="form-control">
-            <span id="erroSenha" name="erroSenha" class="text-danger"></span><br />
+        <div class="col-md-7">
+            <label for="Senha">Confirmar Senha</label>
+            <div class="form-label-group">
+                <input type="password" id="ConfirmarSenha" name="ConfirmarSenha" class="form-control">
+                <span id="erroConfirmarSenha" name="erroConfirmarSenha" class="text-danger"></span><br />
+            </div>
         </div>
     </div>
 
-    <div class="form-group">
-        <label for="Senha">Confirmar Senha</label>
-        <div class="form-label-group">
-            <input type="password" id="ConfirmarSenha" name="ConfirmarSenha" class="form-control">
-            <span id="erroConfirmarSenha" name="erroConfirmarSenha" class="text-danger"></span><br />
-        </div>
-    </div>
-
-    @{
-        string[] permissao = Enum.GetNames(typeof(DTO.Enums.Permissao));
-    }
-    <div class="form-group">
-        <label class="col-md-offset-2">Permissão</label>
-        <div class="form-label-group">
-            <select name="Permissao" id="Permissao" class="form-control">
-                @for (int i = 0; i < permissao.Length; i++)
-                {
-                    <option value="@i">@permissao[i]</option>
-                }
-            </select>
-            <span id="erroPermissao" name="erroPermissao" class="text-danger"></span><br />
-        </div>
-    </div>
+        @{
+            string[] permissao = Enum.GetNames(typeof(DTO.Enums.Permissao));
+        }
+   <div class="form-group">
+       <div class="col-md-7">
+           <label class="col-md-offset-2">Permissão</label>
+           <div class="form-label-group">
+               <select name="Permissao" id="Permissao" class="form-control">
+                   @for (int i = 0; i < permissao.Length; i++)
+                   {
+                       <option value="@i">@permissao[i]</option>
+                   }
+               </select>
+               <span id="erroPermissao" name="erroPermissao" class="text-danger"></span><br />
+           </div>
+       </div>
+   </div>
 
     <div class="row">
         @if (ViewBag.ErrorMessage != null)
@@ -81,6 +92,7 @@
             </div>
         </div>
     </div>
+  
 </form>
 
 @section scripts{
