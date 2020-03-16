@@ -3,7 +3,9 @@
     ViewData["Title"] = "Cadastrar";
 }
 
-<h1 class="text-center">Cadastro de Bebidas</h1>
+<br />
+<h1>Cadastro de Bebida</h1>
+<br />
 
 <form method="post">
     <div class="form-group">
@@ -62,8 +64,7 @@
                     $("#erroNome").html("O nome deve ser informado.");
                     sucesso = false;
                 }
-                else
-                {
+                else {
                     if (Nome.length < 3 || Nome.length > 50) {
                         $("#erroNome").html("O nome deve conter no mínimo 3 a 50 caracteres.");
                         sucesso = false;
@@ -86,10 +87,10 @@
                 }
             });
 
-        $("#BotaoLimpar").click(function () {
-            $("#Nome").val("");
-            $("#Preco").val("");
-        });
+            $("#BotaoLimpar").click(function () {
+                $("#Nome").val("");
+                $("#Preco").val("");
+            });
 
         });
 

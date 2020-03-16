@@ -27,7 +27,6 @@ namespace DAO.Impl
                 return response;
             }
 
-            this._context.Usuarios.Add(usuario);
             try
             {
                 this._context.Usuarios.Add(usuario);

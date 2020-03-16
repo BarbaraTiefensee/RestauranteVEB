@@ -1,37 +1,28 @@
 ﻿@model List<RestauranteVEB.Models.UsuarioQueryViewModel>
 
-    @{
-        ViewBag.Title = "Index";
-    }
+@{
+    ViewBag.Title = "Index";
+}
 
-    <h2>Index</h2>
+<br />
+<h1>Usuários Cadastrados</h1>
+<br />
 
-    <table class="table">
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>CPF</th>
+        <th>Email</th>
+    </tr>
+
+    @foreach (RestauranteVEB.Models.UsuarioQueryViewModel item in Model)
+    {
         <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>CPF</th>
-            <th>Email</th>
+            <td>@item.ID</td>
+            <td>@item.Nome</td>
+            <td>@item.CPF</td>
+            <td>@item.Email</td>
         </tr>
-
-        @foreach (RestauranteVEB.Models.UsuarioQueryViewModel item in Model)
-         {
-            <tr>
-               <td>@item.ID</td>
-               <td>@item.Nome</td>
-               <td>@item.CPF</td>
-               <td>@item.Email</td>
-            </tr>
-         }
-    </table>
-
-    <nav aria-label="Page navigation example">
-        <ul class="pagination">
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">4</a></li>
-            <li class="page-item"><a class="page-link" href="#">5</a></li>
-        </ul>
-    </nav>
-   
+    }
+</table>
