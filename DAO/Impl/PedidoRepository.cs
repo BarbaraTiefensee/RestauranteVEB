@@ -35,6 +35,7 @@ namespace DAO.Impl
         {
             DataResponse<PedidoDTO> response = new DataResponse<PedidoDTO>();
 
+            
             if (response.Erros.Count > 0)
             {
                 response.Sucesso = false;

@@ -4,6 +4,7 @@ using DTO;
 using DTO.Enums;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -27,8 +28,17 @@ namespace BLL.Impl
                 return response;
             }
 
-            await _usuarioRepository.Insert(usuario);
-            return response;
+            try
+            {
+                await _usuarioRepository.Insert(usuario);
+                response.Sucesso = true;
+                return response;
+            }
+            catch (Exception ex)
+            {
+                File.WriteAllText("log.txt", ex.Message + " - " + ex.StackTrace);
+                throw new Exception("Erro no banco de dados, contate o administrador.");
+            }
         }
 
         public async Task<DataResponse<UsuarioDTO>> GetData()
@@ -93,6 +103,15 @@ namespace BLL.Impl
                 {
                     response.Erros.Add("O email deve estar no formato correto.");
                 }
+            }
+
+            if (string.IsNullOrWhiteSpace(item.Senha))
+            {
+                response.Erros.Add("A senha deve ser informada.");
+            }
+            else if(item.Senha.Length < 5 || item.Email.Length > 15)
+            {
+                response.Erros.Add("A senha deve conter de 5 a 15 caracteres.");
             }
 
             return response;

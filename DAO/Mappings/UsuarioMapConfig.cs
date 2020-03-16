@@ -18,6 +18,7 @@ namespace DAO.Mappings
             builder.HasIndex(c => c.Email).IsUnique(true);
             builder.Property(c => c.CPF).IsRequired().IsFixedLength().HasMaxLength(14).IsUnicode(false);
             builder.HasIndex(c => c.CPF).IsUnique(true);
+            builder.Property(c => c.Senha).HasMaxLength(15).IsRequired().IsUnicode(false);
         }
     }
 }

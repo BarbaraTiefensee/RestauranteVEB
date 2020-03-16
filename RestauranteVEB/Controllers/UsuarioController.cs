@@ -52,9 +52,8 @@ namespace RestauranteVEB.Controllers
             catch (Exception ex)
             {
                 ViewBag.ErrorMessage = ex.Message;
+                return View();
             }
-
-            return View();
         }
 
         public async Task<IActionResult> Index()
@@ -73,8 +72,9 @@ namespace RestauranteVEB.Controllers
 
                 return View(dados);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                ViewBag.ErrorMessage = ex.Message;
                 return View();
             }
         }
