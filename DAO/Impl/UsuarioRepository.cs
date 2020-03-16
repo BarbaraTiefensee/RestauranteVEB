@@ -4,6 +4,7 @@ using DTO.Enums;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -31,13 +32,14 @@ namespace DAO.Impl
             {
                 this._context.Usuarios.Add(usuario);
                 await this._context.SaveChangesAsync();
+                response.Sucesso = true;
+                return response;
             }
             catch (Exception ex)
             {
-                response.Erros.Add("se vira pco" + ex.Message);
+                File.WriteAllText("log.txt", ex.Message + " - " + ex.StackTrace);
+                throw new Exception("Erro no banco de dados, contate o administrador.");
             }
-
-            return response;
         }
 
         public async Task<DataResponse<UsuarioDTO>> GetData()
@@ -53,25 +55,35 @@ namespace DAO.Impl
             try
             {
                 var teste = await this._context.Usuarios.ToListAsync();
+                response.Sucesso = true;
                 response.Data = teste;
                 return response;
             }
             catch (Exception ex)
             {
-                throw;
+                File.WriteAllText("log.txt", ex.Message + " - " + ex.StackTrace);
+                throw new Exception("Erro no banco de dados, contate o administrador.");
             }
         }
 
         public async Task<UsuarioDTO> Autententicar(UsuarioDTO usuario)
         {
-            usuario = await _context.Usuarios.FirstOrDefaultAsync(u => u.Email.Equals(usuario.Email) && u.Senha.Equals(usuario.Senha)).ConfigureAwait(false);
-
-            if (usuario == null)
+            try
             {
-                throw new Exception("Email e/ou senhas inválidos.");
-            }
+                usuario = await _context.Usuarios.FirstOrDefaultAsync(u => u.Email.Equals(usuario.Email) && u.Senha.Equals(usuario.Senha)).ConfigureAwait(false);
 
-            return usuario;
+                if (usuario == null)
+                {
+                    throw new Exception("Email e/ou senhas inválidos.");
+                }
+
+                return usuario;
+            }
+            catch (Exception ex)
+            {
+                File.WriteAllText("log.txt", ex.Message + " - " + ex.StackTrace);
+                throw new Exception("Erro no banco de dados, contate o administrador.");
+            }
         }
     }
 }
