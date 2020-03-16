@@ -3,90 +3,96 @@
     ViewData["Title"] = "Cadastro";
 }
 
-
-<h1 class="text-center">Cadastrar Usuário</h1>
+<br />
+<h1>Cadastro de Usuário</h1>
 <br />
 
 <form method="post">
     <div class="form-group">
-        <label for="Nome">Nome</label>
-        <div class="form-label-group">
-            <input type="text" id="Nome" name="Nome" class="form-control">
-            <span id="erroNome" name="erroNome" class="text-danger"></span><br />
+        <div class="col-md-7">
+             <label for="Nome">Nome</label>
+             <div class="form-label-group">
+                  <input type="text" id="Nome" name="Nome" class="form-control">
+                  <span id="erroNome" name="erroNome" class="text-danger"></span><br />
+             </div>
         </div>
     </div>
 
     <div class="form-group">
-        <label for="CPF">CPF</label>
-        <div class="form-label-group">
-            <input type="text" id="CPF" name="CPF" class="form-control" placeholder="000.000.000-00">
-            <span id="erroCPF" name="erroCPF" class="text-danger"></span><br />
+        <div class="col-md-7">
+            <label for="CPF">CPF</label>
+            <div class="form-label-group">
+                <input type="text" id="CPF" name="CPF" class="form-control" placeholder="000.000.000-00">
+                <span id="erroCPF" name="erroCPF" class="text-danger"></span><br />
+            </div>
         </div>
     </div>
 
     <div class="form-group">
-        <label for="Email">Email</label>
-        <div class="form-label-group">
-            <input type="text" id="Email" name="Email" class="form-control">
-            <span id="erroEmail" name="erroEmail" class="text-danger"></span><br />
+        <div class="col-md-7">
+            <label for="Email">Email</label>
+            <div class="form-label-group">
+                <input type="text" id="Email" name="Email" class="form-control">
+                <span id="erroEmail" name="erroEmail" class="text-danger"></span><br />
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-7">
+            <label for="Senha">Senha</label>
+            <div class="form-label-group">
+                <input type="password" id="Senha" name="Senha" class="form-control">
+                <span id="erroSenha" name="erroSenha" class="text-danger"></span><br />
+            </div>
         </div>
     </div>
 
     <div class="form-group">
-        <label for="Senha">Senha</label>
-        <div class="form-label-group">
-            <input type="password" id="Senha" name="Senha" class="form-control">
-            <span id="erroSenha" name="erroSenha" class="text-danger"></span><br />
+        <div class="col-md-7">
+            <label for="Senha">Confirmar Senha</label>
+            <div class="form-label-group">
+                <input type="password" id="ConfirmarSenha" name="ConfirmarSenha" class="form-control">
+                <span id="erroConfirmarSenha" name="erroConfirmarSenha" class="text-danger"></span><br />
+            </div>
         </div>
     </div>
 
-    <div class="form-group">
-        <label for="Senha">Confirmar Senha</label>
-        <div class="form-label-group">
-            <input type="password" id="ConfirmarSenha" name="ConfirmarSenha" class="form-control">
-            <span id="erroConfirmarSenha" name="erroConfirmarSenha" class="text-danger"></span><br />
-        </div>
-    </div>
-
-    @{
-        string[] permissao = Enum.GetNames(typeof(DTO.Enums.Permissao));
-    }
-    <div class="form-group">
-        <label class="col-md-offset-2">Permissão</label>
-        <div class="form-label-group">
-            <select name="Permissao" id="Permissao" class="form-control">
-                @for (int i = 0; i < permissao.Length; i++)
-                {
-                    <option value="@i">@permissao[i]</option>
-                }
-            </select>
-            <span id="erroPermissao" name="erroPermissao" class="text-danger"></span><br />
-        </div>
-    </div>
+        @{
+            string[] permissao = Enum.GetNames(typeof(DTO.Enums.Permissao));
+        }
+   <div class="form-group">
+       <div class="col-md-7">
+           <label class="col-md-offset-2">Permissão</label>
+           <div class="form-label-group">
+               <select name="Permissao" id="Permissao" class="form-control">
+                   @for (int i = 0; i < permissao.Length; i++)
+                   {
+                       <option value="@i">@permissao[i]</option>
+                   }
+               </select>
+               <span id="erroPermissao" name="erroPermissao" class="text-danger"></span><br />
+           </div>
+       </div>
+   </div>
 
     <div class="row">
-        @if (ViewBag.MensagemErro != null)
+        @if (ViewBag.ErrorMessage != null)
         {
             <div class="form-group">
                 <div class="col-md-10">
-                    <span class="text-danger">@ViewBag.MensagemErro</span>
+                    <span class="text-danger">@ViewBag.ErrorMessage</span>
                 </div>
             </div>
         }
 
-        <div class="form-group col-sm text-right">
+        <div class="form-group col-sm">
             <div class="col-md-offset-2">
-                <input type="submit" value="Cadastrar" class="btn btn-primary btn-lg" id="BotaoEnviar" name="BotaoEnviar" />
+                <input type="submit" value="Cadastrar" class="btn btn-secondary btn-lg" id="BotaoEnviar" name="BotaoEnviar" />
+                <input type="button" value="Limpar" class="btn btn-secondary btn-lg" id="BotaoLimpar" name="BotaoLimpar" />
             </div>
         </div>
-
-        <div class="form-group col-sm text-left">
-            <div class="col-md-offset-2">
-                <input type="button" value="Limpar" class="btn btn-primary btn-lg" id="BotaoLimpar" name="BotaoLimpar" />
-            </div>
-        </div>
-
     </div>
+  
 </form>
 
 @section scripts{
