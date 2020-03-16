@@ -3,7 +3,9 @@
     ViewData["Title"] = "Cadastrar";
 }
 
-<h1 class="text-center">Cadastro de Bebidas</h1>
+<br />
+<h1>Cadastro de Bebida</h1>
+<br />
 
 <form method="post">
     <div class="form-group">
@@ -32,15 +34,10 @@
             </div>
         }
 
-        <div class="form-group col-sm text-right">
+        <div class="form-group col-sm">
             <div class="col-md-offset-2">
-                <input type="submit" value="Cadastrar" class="btn btn-primary btn-lg" id="BotaoEnviar" name="BotaoEnviar" />
-            </div>
-        </div>
-
-        <div class="form-group col-sm text-left">
-            <div class="col-md-offset-2">
-                <input type="button" value="Limpar" class="btn btn-primary btn-lg" id="BotaoLimpar" name="BotaoLimpar" />
+                <input type="submit" value="Cadastrar" class="btn btn-secondary btn-lg" id="BotaoEnviar" name="BotaoEnviar" />
+                <input type="button" value="Limpar" class="btn btn-secondary btn-lg" id="BotaoLimpar" name="BotaoLimpar" />
             </div>
         </div>
     </div>
@@ -62,8 +59,7 @@
                     $("#erroNome").html("O nome deve ser informado.");
                     sucesso = false;
                 }
-                else
-                {
+                else {
                     if (Nome.length < 3 || Nome.length > 50) {
                         $("#erroNome").html("O nome deve conter no mínimo 3 a 50 caracteres.");
                         sucesso = false;
@@ -86,10 +82,10 @@
                 }
             });
 
-        $("#BotaoLimpar").click(function () {
-            $("#Nome").val("");
-            $("#Preco").val("");
-        });
+            $("#BotaoLimpar").click(function () {
+                $("#Nome").val("");
+                $("#Preco").val("");
+            });
 
         });
 
