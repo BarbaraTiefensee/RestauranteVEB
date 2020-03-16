@@ -38,16 +38,21 @@ namespace RestauranteVEB.Controllers
 
             try
             {
-                await _bebidaService.Insert(dto);
+                Response response = await _bebidaService.Insert(dto);
 
-                return RedirectToAction("Index", "Bebida");
+                if(response.Sucesso)
+                {
+                    return RedirectToAction("Index", "Bebida");
+                }
+
+                ViewBag.ErrorMessage = response.GetErrorMessage();
+                return View();
             }
             catch (Exception ex)
             {
                 ViewBag.ErrorMessage = ex.Message;
+                return View();
             }
-
-            return View();
         }
 
         public async Task<IActionResult> Index()
@@ -66,8 +71,9 @@ namespace RestauranteVEB.Controllers
 
                 return View(dados);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                ViewBag.ErrorMessage = ex.Message;
                 return View();
             }
         }

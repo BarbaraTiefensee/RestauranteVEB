@@ -28,17 +28,7 @@ namespace BLL.Impl
                 return response;
             }
 
-            try
-            {
-                await _usuarioRepository.Insert(usuario);
-                response.Sucesso = true;
-                return response;
-            }
-            catch (Exception ex)
-            {
-                File.WriteAllText("log.txt", ex.Message + " - " + ex.StackTrace);
-                throw new Exception("Erro no banco de dados, contate o administrador.");
-            }
+            return await _usuarioRepository.Insert(usuario);
         }
 
         public async Task<DataResponse<UsuarioDTO>> GetData()
@@ -109,7 +99,7 @@ namespace BLL.Impl
             {
                 response.Erros.Add("A senha deve ser informada.");
             }
-            else if(item.Senha.Length < 5 || item.Email.Length > 15)
+            else if(item.Senha.Length < 5 || item.Senha.Length > 15)
             {
                 response.Erros.Add("A senha deve conter de 5 a 15 caracteres.");
             }

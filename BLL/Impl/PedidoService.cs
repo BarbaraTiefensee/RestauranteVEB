@@ -26,14 +26,14 @@ namespace BLL.Impl
                 return response;
             }
 
-            await _pedidoRepository.Insert(pedido);
-            return response;
+            return await _pedidoRepository.Insert(pedido);
         }
 
         public async Task<DataResponse<PedidoDTO>> GetData()
         {
             return await _pedidoRepository.GetData();
         }
+
         private Response Validate(PedidoDTO item)
         {
             Response response = new Response();
@@ -45,7 +45,5 @@ namespace BLL.Impl
 
             return response;
         }
-
-
     }
 }

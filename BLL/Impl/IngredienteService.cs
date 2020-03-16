@@ -26,8 +26,7 @@ namespace BLL.Impl
                 return response;
             }
 
-            await _ingredienteRepository.Insert(ingrediente);
-            return response;
+            return await _ingredienteRepository.Insert(ingrediente);
         }
 
         public async Task<DataResponse<IngredienteDTO>> GetData()

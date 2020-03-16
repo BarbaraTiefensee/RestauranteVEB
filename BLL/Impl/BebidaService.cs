@@ -3,6 +3,7 @@ using DAO.Interfaces;
 using DTO;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -26,9 +27,9 @@ namespace BLL.Impl
                 return response;
             }
 
-            await _bebidaRepository.Insert(bebida);
-            return response;
+            return await _bebidaRepository.Insert(bebida);
         }
+
         public async Task<DataResponse<BebidaDTO>> GetData()
         {
             return await _bebidaRepository.GetData();

@@ -45,9 +45,15 @@ namespace RestauranteVEB.Controllers
 
             try
             {
-                await _userService.Insert(dto);
+                Response response = await _userService.Insert(dto);
 
-                return RedirectToAction("Index", "Usuario");
+                if (response.Sucesso)
+                {
+                    return RedirectToAction("Index", "Usuario");
+                }
+
+                ViewBag.ErrorMessage = response.GetErrorMessage();
+                return View();
             }
             catch (Exception ex)
             {

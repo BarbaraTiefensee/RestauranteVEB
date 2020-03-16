@@ -58,16 +58,21 @@ namespace RestauranteVEB.Controllers
 
             try
             {
-                await _pedidoService.Insert(dto);
+                Response response = await _pedidoService.Insert(dto);
 
-                return RedirectToAction("Index", "Pedido");
+                if (response.Sucesso)
+                {
+                    return RedirectToAction("Index", "Pedido");
+                }
+
+                ViewBag.ErrorMessage = response.GetErrorMessage();
+                return View();
             }
             catch (Exception ex)
             {
                 ViewBag.ErrorMessage = ex.Message;
+                return View();
             }
-
-            return View();
         }
 
         public async Task<IActionResult> Index()
