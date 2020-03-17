@@ -8,21 +8,29 @@
 <br />
 
 <form method="post">
-    <div class="form-group">
-        <label for="Nome">Nome</label>
-        <div class="form-label-group">
-            <input type="text" id="Nome" name="Nome" class="form-control">
-            <span id="erroNome" name="erroNome" class="text-danger"></span><br />
+    <center>
+        <div class="form-group">
+            <div class="col-md-7 text-left">
+                <label for="Nome">Nome</label>
+                <div class="form-label-group">
+                    <input type="text" id="Nome" name="Nome" class="form-control">
+                    <span id="erroNome" name="erroNome" class="text-danger"></span><br />
+                </div>
+            </div>
         </div>
-    </div>
+    </center>
 
-    <div class="form-group">
-        <label for="Preco">Preco</label>
-        <div class="form-label-group">
-            <input type="text" id="Preco" name="Preco" class="form-control">
-            <span id="erroPreco" name="erroPreco" class="text-danger"></span><br />
+    <center>
+        <div class="form-group">
+            <div class="col-md-7 text-left">
+                <label for="Preco">Preco</label>
+                <div class="form-label-group">
+                    <input type="text" id="Preco" name="Preco" class="form-control">
+                    <span id="erroPreco" name="erroPreco" class="text-danger"></span><br />
+                </div>
+            </div>
         </div>
-    </div>
+    </center>
 
     <div class="row">
         @if (ViewBag.ErrorMessage != null)
