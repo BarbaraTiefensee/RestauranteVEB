@@ -7,44 +7,52 @@
 <br />
 
 <form method="post">
-    <div class="form-group">
-        <label for="Nome">Nome</label>
-        <div class="form-label-group">
-            <input type="text" id="Nome" name="Nome" class="form-control">
-            <span id="erroNome" name="erroNome" class="text-danger"></span><br />
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label for="Quantidade">Quantidade</label>
-        <div class="form-label-group">
-            <input type="text" id="Quantidade" name="Quantidade" class="form-control">
-            <span id="erroQuantidade" name="erroQuantidade" class="text-danger"></span><br />
-        </div>
-    </div>
-
-    <div class="row">
-        @if (ViewBag.ErrorMessage != null)
-        {
-            <div class="form-group">
-                <div class="col-md-10">
-                    <span class="text-danger">@ViewBag.ErrorMessage</span>
+    <center>
+        <div class="form-group">
+            <div class="col-md-7 text-left">
+                <label for="Nome">Nome</label>
+                <div class="form-label-group">
+                    <input type="text" id="Nome" name="Nome" class="form-control">
+                    <span id="erroNome" name="erroNome" class="text-danger"></span><br />
                 </div>
             </div>
-        }
+        </div>
+    </center>
 
-        <div class="form-group col-sm text-right">
-            <div class="col-md-offset-2">
-                <input type="submit" value="Cadastrar" class="btn btn-secondary btn-lg" id="BotaoEnviar" name="BotaoEnviar" />
+    <center>
+        <div class="form-group">
+            <div class="col-md-7 text-left">
+                <label for="Quantidade">Quantidade</label>
+                <div class="form-label-group">
+                    <input type="text" id="Quantidade" name="Quantidade" class="form-control">
+                    <span id="erroQuantidade" name="erroQuantidade" class="text-danger"></span><br />
+                </div>
             </div>
         </div>
+    </center>
 
-        <div class="form-group col-sm text-left">
-            <div class="col-md-offset-2">
-                <input type="button" value="Limpar" class="btn btn-secondary btn-lg" id="BotaoLimpar" name="BotaoLimpar" />
+        <div class="row">
+            @if (ViewBag.ErrorMessage != null)
+            {
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <span class="text-danger">@ViewBag.ErrorMessage</span>
+                    </div>
+                </div>
+            }
+
+            <div class="form-group col-sm text-right">
+                <div class="col-md-offset-2">
+                    <input type="submit" value="Cadastrar" class="btn btn-secondary btn-lg" id="BotaoEnviar" name="BotaoEnviar" />
+                </div>
+            </div>
+
+            <div class="form-group col-sm text-left">
+                <div class="col-md-offset-2">
+                    <input type="button" value="Limpar" class="btn btn-secondary btn-lg" id="BotaoLimpar" name="BotaoLimpar" />
+                </div>
             </div>
         </div>
-    </div>
 </form>
 
 @section scripts{
