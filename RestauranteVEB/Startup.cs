@@ -40,7 +40,6 @@ namespace RestauranteVEB
             services.AddTransient<IIngredienteService, IngredienteService>();
             services.AddTransient<IIngredienteRepository, IngredienteRepository>();
 
-
             services.AddTransient<IRefeicaoService, RefeicaoService>();
             services.AddTransient<IRefeicaoRepository, RefeicaoRepository>();
 
@@ -60,6 +59,7 @@ namespace RestauranteVEB
                 options.LoginPath = "/Usuario/Login";
                 options.LogoutPath = "/Usuario/LogOff";
                 options.Cookie.Name = "AshProgHelpCookie";
+                options.AccessDeniedPath = "/Home/Index";
             });
         }
 
@@ -86,7 +86,6 @@ namespace RestauranteVEB
             app.UseAuthorization();
             app.UseCookiePolicy();
            
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

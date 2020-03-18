@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 using AutoMapper;
 using BLL.Interfaces;
 using DTO;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RestauranteVEB.Models;
 
 namespace RestauranteVEB.Controllers
 {
+    [Authorize(Roles = "ADM")]
     public class BebidaController : Controller
     {
         private IBebidaService _bebidaService;
