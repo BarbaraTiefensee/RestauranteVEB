@@ -11,6 +11,7 @@ using DTO;
 using DTO.Enums;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using RestauranteVEB.Models;
@@ -27,12 +28,14 @@ namespace RestauranteVEB.Controllers
             this._userService = userService;
         }
 
+        [Authorize(Roles = "ADM")]
         public async Task<IActionResult> Cadastrar()
         {
             return View();
         }
 
         [HttpPost]
+        [Authorize(Roles = "ADM")]
         public async Task<IActionResult> Cadastrar(UsuarioViewModel usuarioViewModel)
         {
             var configuration = new MapperConfiguration(cfg =>
@@ -62,6 +65,7 @@ namespace RestauranteVEB.Controllers
             }
         }
 
+        [Authorize(Roles = "ADM")]
         public async Task<IActionResult> Index()
         {
             try
@@ -106,10 +110,21 @@ namespace RestauranteVEB.Controllers
 
                 await _userService.Autententicar(usuarioDTO);
 
-                var claims = new List<Claim>
+                List<Claim> claims = new List<Claim>();
+                if (usuarioDTO.Permissao == DTO.Enums.Permissao.Adiministrador)
                 {
-                    new Claim(ClaimTypes.Name, usuario.Email)
-                };
+                    claims = new List<Claim>
+                    {
+                        new Claim(ClaimTypes.Role, "ADM")
+                    };
+                }
+                else
+                {
+                    claims = new List<Claim>
+                    {
+                        new Claim(ClaimTypes.Role, "FUNCIONARIO")
+                    };
+                }
 
                 var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                 var principal = new ClaimsPrincipal(identity);
