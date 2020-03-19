@@ -96,33 +96,27 @@ namespace RestauranteVEB.Controllers
 
 
         [HttpPost]
-        public async Task<ActionResult> Login(UsuarioViewModel usuario)
+        public async Task<ActionResult> Login(string email, string senha)
         {
             try
             {
-                var configuration = new MapperConfiguration(cfg =>
-                {
-                    cfg.CreateMap<UsuarioViewModel, UsuarioDTO>();
-                });
-                IMapper mapper = configuration.CreateMapper();
-
-                UsuarioDTO usuarioDTO = mapper.Map<UsuarioDTO>(usuario);
-
-                await _userService.Autententicar(usuarioDTO);
+                UsuarioDTO usuarioDTO = await _userService.Autententicar(email, senha);
 
                 List<Claim> claims = new List<Claim>();
-                if (usuarioDTO.Permissao == DTO.Enums.Permissao.Adiministrador)
+                if (usuarioDTO.Permissao == Permissao.Adiministrador)
                 {
                     claims = new List<Claim>
                     {
-                        new Claim(ClaimTypes.Role, "ADM")
+                        new Claim(ClaimTypes.Role, "ADM"),
+                        new Claim(ClaimTypes.Name, usuarioDTO.Email)
                     };
                 }
                 else
                 {
                     claims = new List<Claim>
                     {
-                        new Claim(ClaimTypes.Role, "FUNCIONARIO")
+                        new Claim(ClaimTypes.Role, "FUNCIONARIO"),
+                        new Claim(ClaimTypes.Name, usuarioDTO.Email)
                     };
                 }
 
@@ -130,7 +124,7 @@ namespace RestauranteVEB.Controllers
                 var principal = new ClaimsPrincipal(identity);
                 var props = new AuthenticationProperties();
                 HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal, props).Wait();
-                ViewBag.UsuarioLogado = true;
+                ViewBag.UsuarioLogado = claims;
 
                 return RedirectToAction("Index", "Home");
             }
