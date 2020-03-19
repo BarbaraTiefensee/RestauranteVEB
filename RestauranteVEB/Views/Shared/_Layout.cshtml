@@ -49,6 +49,23 @@
                 Interface
             </div>
 
+            <!-- Nav Item - Utilities Collapse Menu -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Cardápio</span>
+                </a>
+                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Cardápio:</h6>
+                        <a class="collapse-item" href="~/Menu/Bebida"><i class="fas fa-wine-glass-alt "></i>Bebida</a>
+                        <a class="collapse-item" href="~/Menu/Comida"><i class="fas fa-utensils"></i>Comida</a>
+                        <a class="collapse-item" href="~/Menu/Sobremesa"><i class="fas fa-candy-cane"></i>Sobremesa</a>
+                    </div>
+                </div>
+            </li>
+
             @if (User.IsInRole("ADM"))
             {
                 <!-- Nav Item - Pages Collapse Menu -->
@@ -85,22 +102,7 @@
                 </li>
             }
 
-            <!-- Nav Item - Utilities Collapse Menu -->
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Cardápio</span>
-                </a>
-                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Cardápio:</h6>
-
-
-
-                    </div>
-                </div>
-            </li> 
 
             <!-- Divider -->
             <!-- Heading -->
