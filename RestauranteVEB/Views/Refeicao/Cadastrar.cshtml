@@ -8,21 +8,29 @@
 <br />
 
 <form method="post">
-    <div class="form-group">
-        <label for="Nome">Nome</label>
-        <div class="form-label-group">
-            <input type="text" id="Nome" name="Nome" class="form-control">
-            <span id="erroNome" name="erroNome" class="text-danger"></span><br />
+    <center>
+        <div class="form-group">
+            <div class="col-md-7 text-left">
+                <label for="Nome">Nome</label>
+                <div class="form-label-group">
+                    <input type="text" id="Nome" name="Nome" class="form-control">
+                    <span id="erroNome" name="erroNome" class="text-danger"></span><br />
+                </div>
+            </div>
         </div>
-    </div>
+    </center>
 
-    <div class="form-group">
-        <label for="Preco">Preco</label>
-        <div class="form-label-group">
-            <input type="text" id="Preco" name="Preco" class="form-control">
-            <span id="erroPreco" name="erroPreco" class="text-danger"></span><br />
+    <center>
+        <div class="form-group">
+            <div class="col-md-7 text-left">
+                <label for="Preco">Preco</label>
+                <div class="form-label-group">
+                    <input type="text" id="Preco" name="Preco" class="form-control">
+                    <span id="erroPreco" name="erroPreco" class="text-danger"></span><br />
+                </div>
+            </div>
         </div>
-    </div>
+    </center>
 
     <div class="row">
         @if (ViewBag.ErrorMessage != null)
@@ -34,13 +42,13 @@
             </div>
         }
 
-        <div class="form-group text-right">
+        <div class="form-group col-sm text-right">
             <div class="col-md-offset-2">
                 <input type="submit" value="Cadastrar" class="btn btn-secondary btn-lg" id="BotaoEnviar" name="BotaoEnviar" />
             </div>
         </div>
 
-        <div class="form-group text-left">
+        <div class="form-group col-sm text-left">
             <div class="col-md-offset-2">
                 <input type="button" value="Limpar" class="btn btn-secondary btn-lg" id="BotaoLimpar" name="BotaoLimpar" />
             </div>
@@ -66,8 +74,8 @@
                     sucesso = false;
                 }
                 else {
-                    if (Nome.length < 5 || Nome.length > 50) {
-                        $("#erroNome").html("O nome deve conter no mínimo 5 a 50 caracteres.");
+                    if (Nome.length < 3 || Nome.length > 50) {
+                        $("#erroNome").html("O nome deve conter no mínimo 3 a 50 caracteres.");
                         sucesso = false;
                     }
                     else {
@@ -97,4 +105,3 @@
 
     </script>
 }
-

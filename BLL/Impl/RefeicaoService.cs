@@ -26,8 +26,7 @@ namespace BLL.Impl
                 return response;
             }
 
-            await _refeicaoRepository.Insert(refeicao);
-            return response;
+            return await _refeicaoRepository.Insert(refeicao);
         }
 
         public async Task<DataResponse<RefeicaoDTO>> GetData()
