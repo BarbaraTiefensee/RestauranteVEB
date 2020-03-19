@@ -11,6 +11,6 @@ namespace DAO.Interfaces
     {
         Task<Response> Insert(UsuarioDTO usuario);
         Task<DataResponse<UsuarioDTO>> GetData();
-        Task<UsuarioDTO> Autententicar(UsuarioDTO usuario);
+        Task<UsuarioDTO> Autententicar(string email, string senha);
     }
 }

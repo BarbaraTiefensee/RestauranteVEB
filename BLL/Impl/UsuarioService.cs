@@ -36,9 +36,9 @@ namespace BLL.Impl
             return await _usuarioRepository.GetData();
         }
 
-        public async Task<UsuarioDTO> Autententicar(UsuarioDTO usuario)
+        public async Task<UsuarioDTO> Autententicar(string email, string senha)
         {
-            return await _usuarioRepository.Autententicar(usuario);
+            return await _usuarioRepository.Autententicar(email,senha);
         }
 
         private Response Validate(UsuarioDTO item)

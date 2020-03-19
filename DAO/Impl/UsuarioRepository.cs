@@ -88,9 +88,9 @@ namespace DAO.Impl
             }
         }
 
-        public async Task<UsuarioDTO> Autententicar(UsuarioDTO usuario)
+        public async Task<UsuarioDTO> Autententicar(string email, string senha)
         {
-            usuario = await _context.Usuarios.FirstOrDefaultAsync(u => u.Email.Equals(usuario.Email) && u.Senha.Equals(usuario.Senha)).ConfigureAwait(false);
+            UsuarioDTO usuario = await _context.Usuarios.FirstOrDefaultAsync(u => u.Email.Equals(email) && u.Senha.Equals(senha)).ConfigureAwait(false);
 
             if (usuario == null)
             {
