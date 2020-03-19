@@ -9,15 +9,15 @@ using System.Threading.Tasks;
 
 namespace DAO.Impl
 {
-    public class BebidaRepository : IBebidaRepository
+    public class SobremesaRepository : ISobremesaRepository
     {
         private RContext _context;
-        public BebidaRepository(RContext context)
+        public SobremesaRepository(RContext context)
         {
             this._context = context;
         }
 
-        public async Task<Response> Insert(BebidaDTO bebida)
+        public async Task<Response> Insert(SobremesaDTO sobremesa)
         {
             Response response = new Response();
 
@@ -29,15 +29,15 @@ namespace DAO.Impl
 
             try
             {
-                BebidaDTO bebidaJaCadastrada = await _context.Bebidas.FirstOrDefaultAsync(c => c.Nome.Equals(bebida.Nome));
-                if (bebidaJaCadastrada != null)
+                SobremesaDTO sobremesaJaCadastrada = await _context.Sobremesas.FirstOrDefaultAsync(c => c.Nome.Equals(sobremesa.Nome));
+                if (sobremesaJaCadastrada != null)
                 {
-                    response.Erros.Add("Bebida já cadastrada!");
+                    response.Erros.Add("Sobremesa já cadastrada!");
                     response.Sucesso = false;
                     return response;
                 }
 
-                this._context.Bebidas.Add(bebida);
+                this._context.Sobremesas.Add(sobremesa);
                 await this._context.SaveChangesAsync();
                 response.Sucesso = true;
                 return response;
@@ -52,9 +52,9 @@ namespace DAO.Impl
             }
         }
 
-        public async Task<DataResponse<BebidaDTO>> GetData()
+        public async Task<DataResponse<SobremesaDTO>> GetData()
         {
-            DataResponse<BebidaDTO> response = new DataResponse<BebidaDTO>();
+            DataResponse<SobremesaDTO> response = new DataResponse<SobremesaDTO>();
 
             if (response.Erros.Count > 0)
             {
@@ -64,7 +64,7 @@ namespace DAO.Impl
 
             try
             {
-                var teste = await this._context.Bebidas.ToListAsync();
+                var teste = await this._context.Sobremesas.ToListAsync();
                 response.Sucesso = true;
                 response.Data = teste;
                 return response;

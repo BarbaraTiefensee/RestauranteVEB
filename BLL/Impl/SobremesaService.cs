@@ -3,23 +3,22 @@ using DAO.Interfaces;
 using DTO;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace BLL.Impl
 {
-    public class BebidaService : IBebidaService
+    public class SobremesaService : ISobremesaService
     {
-        private IBebidaRepository _bebidaRepository;
-        public BebidaService(IBebidaRepository bebidaRepository)
+        private ISobremesaRepository _sobremesaRepository;
+        public SobremesaService(ISobremesaRepository sobremesaRepository)
         {
-            this._bebidaRepository = bebidaRepository;
+            this._sobremesaRepository = sobremesaRepository;
         }
 
-        public async Task<Response> Insert(BebidaDTO bebida)
+        public async Task<Response> Insert(SobremesaDTO sobremesa)
         {
-            Response response = Validate(bebida);
+            Response response = Validate(sobremesa);
 
             if (response.Erros.Count > 0)
             {
@@ -27,15 +26,15 @@ namespace BLL.Impl
                 return response;
             }
 
-            return await _bebidaRepository.Insert(bebida);
+            return await _sobremesaRepository.Insert(sobremesa);
         }
 
-        public async Task<DataResponse<BebidaDTO>> GetData()
+        public async Task<DataResponse<SobremesaDTO>> GetData()
         {
-            return await _bebidaRepository.GetData();
+            return await _sobremesaRepository.GetData();
         }
 
-        private Response Validate(BebidaDTO item)
+        private Response Validate(SobremesaDTO item)
         {
             Response response = new Response();
 

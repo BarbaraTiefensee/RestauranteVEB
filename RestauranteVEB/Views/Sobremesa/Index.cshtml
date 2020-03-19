@@ -1,0 +1,27 @@
+﻿@model List<RestauranteVEB.Models.SobremesaQueryViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<br />
+<h2>Sobremesas Cadastradas</h2>
+<br />
+
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Preco</th>
+    </tr>
+
+    @foreach (RestauranteVEB.Models.SobremesaQueryViewModel item in Model)
+    {
+        <tr>
+            <td>@item.ID</td>
+            <td>@item.Nome</td>
+            <td>@item.Preco.ToString("C2")</td>
+        </tr>
+    }
+</table>
+

@@ -30,6 +30,16 @@
                 </select>
                 <span id="erroBebida" name="erroBebida" class="text-danger"></span><br />
             </div>
+            <div class="form-group col-sm">
+                <label class="control-label">Sobremesas</label>
+                <select name="SobremesaID" id="SobremesaID" class="form-control">
+                    @foreach (var item in ViewBag.Sobremesas)
+                    {
+                        <option data-preco="@item.Preco" value="@item.ID">@item.Nome</option>
+                    }
+                </select>
+                <span id="erroBebida" name="erroBebida" class="text-danger"></span><br />
+            </div>
         </div>
     </div>
 
@@ -60,6 +70,7 @@
                 <input type="submit" value="Finalizar" class="btn btn-secondary btn-lg" id="Finalizar" name="Finalizar" />
                 <input type="button" value="Adicionar Bebida" class="btn btn-secondary btn-lg" id="AddBebida" name="AddBebida" />
                 <input type="button" value="Adicionar Refeição" class="btn btn-secondary btn-lg" id="AddRefeicao" name="AddRefeicao" />
+                <input type="button" value="Adicionar Sobremesa" class="btn btn-secondary btn-lg" id="AddSobremesa" name="AddSobremesa" />
             </div>
         </div>
     </div>
@@ -149,6 +160,23 @@
 
                 var id = $("#RefeicaoID").val();
                 var nome = $("#RefeicaoID").find('option:selected').text();
+                var preco = selected.data("preco");
+
+                //var total = selected.total("preco");
+
+
+
+                table.row.add([
+                    id, nome, preco
+                ]).draw(false);
+            });
+
+            $("#AddSobremesa").click(function (e) {
+
+                var selected = $("#SobremesaID").find('option:selected');
+
+                var id = $("#SobremesaID").val();
+                var nome = $("#SobremesaID").find('option:selected').text();
                 var preco = selected.data("preco");
 
                 //var total = selected.total("preco");

@@ -14,7 +14,7 @@ namespace DAO.Mappings
             builder.ToTable("BEBIDAS");
 
             builder.Property(b => b.Nome).HasMaxLength(50).IsRequired().IsUnicode();
-            builder.Property(b => b.Preco).IsRequired().IsUnicode();
+            builder.Property(b => b.Preco).IsRequired().IsUnicode(false);
         }
     }
 }

@@ -46,6 +46,9 @@ namespace RestauranteVEB
             services.AddTransient<IBebidaService, BebidaService>();
             services.AddTransient<IBebidaRepository, BebidaRepository>();
 
+            services.AddTransient<ISobremesaService, SobremesaService>();
+            services.AddTransient<ISobremesaRepository, SobremesaRepository>();
+
             //Definindo a conection string.
             services.AddDbContextPool<RContext>(c => c.UseSqlServer(Configuration["ConnectionString"]));
 

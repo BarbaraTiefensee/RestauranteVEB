@@ -21,13 +21,13 @@ namespace DAO
         public DbSet<UsuarioDTO> Usuarios { get; set; }
         public DbSet<RefeicaoDTO> Refeicoes { get; set; }
         public DbSet<BebidaDTO> Bebidas { get; set; }
+        public DbSet<SobremesaDTO> Sobremesas { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //modelBuilder.Entity<string>().Property(s => s.IsNormalized()).IsRequired().IsUnicode(false).HasColumnType("varchar");
-
             modelBuilder.Entity<PedidoBebida>().HasKey(t => new { t.PedidoID, t.BebidaID });
             modelBuilder.Entity<PedidoRefeicao>().HasKey(t => new { t.PedidoID, t.RefeicaoID });
+            modelBuilder.Entity<PedidoSobremesa>().HasKey(t => new { t.PedidoID, t.SobremesaID });
             modelBuilder.Entity<RefeicaoIngrediente>().HasKey(t => new { t.RefeicaoID, t.IngredienteID });
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 

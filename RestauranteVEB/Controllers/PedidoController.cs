@@ -16,31 +16,37 @@ namespace RestauranteVEB.Controllers
         private IPedidoService _pedidoService;
         private IRefeicaoService _refeicaoService;
         private IBebidaService _BebidaService;
+        private ISobremesaService _sobremesaService;
 
-        public PedidoController(IPedidoService pedidoService, IRefeicaoService refeicaoService, IBebidaService bebidaService)
+        public PedidoController(IPedidoService pedidoService, IRefeicaoService refeicaoService, IBebidaService bebidaService, ISobremesaService sobremesaService)
         {
             this._pedidoService = pedidoService;
             this._refeicaoService = refeicaoService;
             this._BebidaService = bebidaService;
+            this._sobremesaService = sobremesaService;
         }
 
         public async Task<IActionResult> Cadastrar()
         {
             DataResponse<RefeicaoDTO> refeicoes = _refeicaoService.GetData().Result;
             DataResponse<BebidaDTO> bebidas =  _BebidaService.GetData().Result;
+            DataResponse<SobremesaDTO> sobremesas =  _sobremesaService.GetData().Result;
 
             var configuration = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<RefeicaoDTO, RefeicaoQueryViewModel>();
                 cfg.CreateMap<BebidaDTO, BebidaQueryViewModel>();
+                cfg.CreateMap<SobremesaDTO, SobremesaQueryViewModel>();
             });
             IMapper mapper = configuration.CreateMapper();
 
             List<RefeicaoQueryViewModel> dadosRefeiceos = mapper.Map<List<RefeicaoQueryViewModel>>(refeicoes.Data);
             List<BebidaQueryViewModel> dadosBebidas = mapper.Map<List<BebidaQueryViewModel>>(bebidas.Data);
+            List<SobremesaQueryViewModel> dadosSobremesas = mapper.Map<List<SobremesaQueryViewModel>>(sobremesas.Data);
 
             ViewBag.Refeicoes = dadosRefeiceos;
             ViewBag.Bebidas = dadosBebidas;
+            ViewBag.Sobremesas = dadosSobremesas;
 
             return View();
         }

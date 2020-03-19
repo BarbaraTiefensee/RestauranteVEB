@@ -33,7 +33,7 @@ namespace DAO.Migrations
 
                     b.Property<double>("Preco")
                         .HasColumnType("float")
-                        .IsUnicode(true);
+                        .IsUnicode(false);
 
                     b.HasKey("ID");
 
@@ -123,6 +123,21 @@ namespace DAO.Migrations
                     b.ToTable("PedidoRefeicao");
                 });
 
+            modelBuilder.Entity("DTO.PedidoSobremesa", b =>
+                {
+                    b.Property<int>("PedidoID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SobremesaID")
+                        .HasColumnType("int");
+
+                    b.HasKey("PedidoID", "SobremesaID");
+
+                    b.HasIndex("SobremesaID");
+
+                    b.ToTable("PedidoSobremesa");
+                });
+
             modelBuilder.Entity("DTO.RefeicaoDTO", b =>
                 {
                     b.Property<int>("ID")
@@ -163,6 +178,28 @@ namespace DAO.Migrations
                     b.HasIndex("IngredienteID1");
 
                     b.ToTable("RefeicaoIngrediente");
+                });
+
+            modelBuilder.Entity("DTO.SobremesaDTO", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50)
+                        .IsUnicode(true);
+
+                    b.Property<double>("Preco")
+                        .HasColumnType("float")
+                        .IsUnicode(false);
+
+                    b.HasKey("ID");
+
+                    b.ToTable("SOBREMESAS");
                 });
 
             modelBuilder.Entity("DTO.UsuarioDTO", b =>
@@ -235,6 +272,21 @@ namespace DAO.Migrations
                     b.HasOne("DTO.RefeicaoDTO", "Refeicao")
                         .WithMany("Pedidos")
                         .HasForeignKey("RefeicaoID1")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("DTO.PedidoSobremesa", b =>
+                {
+                    b.HasOne("DTO.PedidoDTO", "Pedido")
+                        .WithMany()
+                        .HasForeignKey("PedidoID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DTO.SobremesaDTO", "Sobremesa")
+                        .WithMany("Pedidos")
+                        .HasForeignKey("SobremesaID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
