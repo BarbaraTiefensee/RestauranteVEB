@@ -65,7 +65,7 @@
                     </div>
                 </div>
             </li>
-            
+
             @if (User.IsInRole("ADM"))
             {
                 <!-- Nav Item - Pages Collapse Menu -->
@@ -87,8 +87,7 @@
                     </div>
                 </li>
             }
-
-            @else if(User.IsInRole("FUNCIONARIO"))
+            else if (User.IsInRole("FUNCIONARIO"))
             {
                 <!-- Nav Item - Pages Collapse Menu -->
                 <li class="nav-item">

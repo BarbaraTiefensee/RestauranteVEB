@@ -61,34 +61,27 @@
             </tfoot>
             </tbody>
         </table>
-
     </div>
 
-    <center>
-        <div class="form-group ">
-            <div class="col-md-offset-2 col-md-9">
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-9">
+            <div class="text-right">
+                <input type="submit" value="Finalizar" class="btn btn-secondary btn-lg" id="Finalizar" name="Finalizar" />
                 <input type="button" value="Adicionar Bebida" class="btn btn-secondary btn-lg" id="AddBebida" name="AddBebida" />
                 <input type="button" value="Adicionar Refeição" class="btn btn-secondary btn-lg" id="AddRefeicao" name="AddRefeicao" />
                 <input type="button" value="Adicionar Sobremesa" class="btn btn-secondary btn-lg" id="AddSobremesa" name="AddSobremesa" />
             </div>
         </div>
-    </center>
-
-    <center>
-        <div calss="form-froup">
-            <div class="col-md-offset-2 col-md-9">
-                <input type="submit" value="Finalizar" class="btn btn-secondary btn-lg" id="Finalizar" name="Finalizar" />
-            </div>
-        </div>
-    </center>
-
+    </div>
 </body>
 
 @section scripts{
+
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 
     <script type="text/javascript">
+
         $(document).ready(function (e) {
 
             var table = $('#Nota').DataTable(
