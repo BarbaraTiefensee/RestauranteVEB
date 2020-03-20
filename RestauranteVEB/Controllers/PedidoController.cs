@@ -6,11 +6,13 @@ using AutoMapper;
 using BLL.Impl;
 using BLL.Interfaces;
 using DTO;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RestauranteVEB.Models;
 
 namespace RestauranteVEB.Controllers
 {
+    [Authorize(Roles = "FUNCIONARIO")]
     public class PedidoController : Controller
     {
         private IPedidoService _pedidoService;
