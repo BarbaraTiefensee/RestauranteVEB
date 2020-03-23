@@ -78,11 +78,77 @@
 
 @section scripts{
 
-    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 
     <script type="text/javascript">
 
+
         $(document).ready(function () {
+
+            var SSSpageTotal = 0;
+
+            $("#AddBebida").click(function () {
+
+                debugger
+                var selected = $("#BebidaID").find('option:selected');
+
+                var id = $("#BebidaID").val();
+                var nome = $("#BebidaID").find('option:selected').text();
+                var preco = selected.data("preco");
+
+                SSSpageTotal += preco;
+
+                table.row.add([
+                    id, nome, preco
+                ]).draw(false);
+            });
+
+            $("#AddRefeicao").click(function () {
+                debugger
+
+                var selected = $("#RefeicaoID").find('option:selected');
+
+                var id = $("#RefeicaoID").val();
+                var nome = $("#RefeicaoID").find('option:selected').text();
+                var preco = selected.data("preco");
+
+                SSSpageTotal += preco;
+
+                table.row.add([
+                    id, nome, preco
+                ]).draw(false);
+            });
+
+            $("#AddSobremesa").click(function () {
+                debugger
+
+                var selected = $("#SobremesaID").find('option:selected');
+
+                var id = $("#SobremesaID").val();
+                var nome = $("#SobremesaID").find('option:selected').text();
+                var preco = selected.data("preco");
+
+                SSSpageTotal += preco;
+
+                table.row.add([
+                    id, nome, preco
+                ]).draw(false);
+            });
+
+            $("#Finalizar").click(function (e) {
+                debugger
+
+                // var selected1 = $("#BebidaID").find('option:selectedBebida');
+
+                // var selected2 = $("#RefeicaoID").find('option:selectedRefeicao');
+                //
+
+                // var total1 = selected1.data("preco").total();
+                //var total = selected.total("preco");
+
+                e.preventDefault();
+
+            });
 
             var table = $('#Nota').DataTable(
                 {
@@ -135,67 +201,7 @@
                     }
 
                 });
-
-
-            $("#AddBebida").click(function () {
-
-                var selected = $("#BebidaID").find('option:selected');
-
-                var id = $("#BebidaID").val();
-                var nome = $("#BebidaID").find('option:selected').text();
-                var preco = selected.data("preco");
-
-                // var total = selected.total("preco");
-
-                table.row.add([
-                    id, nome, preco
-                ]).draw(false);
-            });
-
-            $("#AddRefeicao").click(function () {
-
-                var selected = $("#RefeicaoID").find('option:selected');
-
-                var id = $("#RefeicaoID").val();
-                var nome = $("#RefeicaoID").find('option:selected').text();
-                var preco = selected.data("preco");
-
-                //var total = selected.total("preco");
-
-                table.row.add([
-                    id, nome, preco
-                ]).draw(false);
-            });
-
-            $("#AddSobremesa").click(function () {
-
-                var selected = $("#SobremesaID").find('option:selected');
-
-                var id = $("#SobremesaID").val();
-                var nome = $("#SobremesaID").find('option:selected').text();
-                var preco = selected.data("preco");
-
-                //var total = selected.total("preco");
-
-                table.row.add([
-                    id, nome, preco
-                ]).draw(false);
-            });
-
-            $("#Finalizar").click(function (e) {
-
-                // var selected1 = $("#BebidaID").find('option:selectedBebida');
-
-                // var selected2 = $("#RefeicaoID").find('option:selectedRefeicao');
-                //
-
-                // var total1 = selected1.data("preco").total();
-                //var total = selected.total("preco");
-
-                e.preventDefault();
-
-            });
         });
-    </script>
 
+    </script>
 }
