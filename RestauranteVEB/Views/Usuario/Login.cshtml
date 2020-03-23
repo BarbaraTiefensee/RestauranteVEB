@@ -17,22 +17,31 @@
 
 <body>
     <form action="Login" method="post">
-        <div class="form-group">
-            <br />
-            <label for="email">Email</label>
-            <div class="form-label-group">
-                <input type="text" name="Email" id="Email" class="form-control" placeholder="Email">
-                <span id="erroEmail" name="erroEmail" class="text-danger"></span><br />
-            </div>
-        </div>
 
-        <div class="form-group">
-            <label for="Senha">Senha</label>
-            <div class="form-label-group">
-                <input type="password" name="Senha" id="Senha" class="form-control" placeholder="Senha">
-                <span id="erroSenha" name="erroSenha" class="text-danger"></span><br />
+        <center>
+            <div class="form-group">
+                <br />
+                <div class="col-md-7 text-left">
+                    <label for="email">Email</label>
+                    <div class="form-label-group">
+                        <input type="text" name="Email" id="Email" class="form-control" placeholder="Email">
+                        <span id="erroEmail" name="erroEmail" class="text-danger"></span><br />
+                    </div>
+                </div>
             </div>
-        </div>
+        </center>
+
+        <center>
+            <div class="form-group">
+                <div class="col-md-7 text-left">
+                    <label for="Senha">Senha</label>
+                    <div class="form-label-group">
+                        <input type="password" name="Senha" id="Senha" class="form-control" placeholder="Senha">
+                        <span id="erroSenha" name="erroSenha" class="text-danger"></span><br />
+                    </div>
+                </div>
+            </div>
+        </center>    
 
         <div class="row">
             @if (ViewBag.ErrorMessage != null)
@@ -44,10 +53,15 @@
                 </div>
             }
 
-            <div class="form-group col-sm">
+            <div class="form-group col-sm text-right">
                 <div class="col-md-offset-2">
                     <input type="submit" value="Cadastrar" class="btn btn-secondary btn-lg" id="BotaoEnviar" name="BotaoEnviar" />
-                    <input type="button" value="Limpar" class="btn btn-secondary btn-lg" id="BotaoLimpar" name="BotaoLimpar" />
+                </div>
+            </div>
+
+            <div class="form-group col-sm text-Left">
+                <div class="col-md-offset-2">
+                    <input type="submit" value="Limpar" class="btn btn-secondary btn-lg" id="BotaoLimpar" name="BotaoLimpar" />
                 </div>
             </div>
         </div>
