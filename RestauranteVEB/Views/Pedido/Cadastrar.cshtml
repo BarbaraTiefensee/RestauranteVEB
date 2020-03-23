@@ -53,36 +53,36 @@
                     <th>Preco</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody></tbody>
             <tfoot>
                 <tr>
                     <th colspan="3" style="text-align:right">Total:</th>
                 </tr>
             </tfoot>
-            </tbody>
         </table>
     </div>
 
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-9">
-            <div class="text-right">
-                <input type="submit" value="Finalizar" class="btn btn-secondary btn-lg" id="Finalizar" name="Finalizar" />
-                <input type="button" value="Adicionar Bebida" class="btn btn-secondary btn-lg" id="AddBebida" name="AddBebida" />
-                <input type="button" value="Adicionar Refeição" class="btn btn-secondary btn-lg" id="AddRefeicao" name="AddRefeicao" />
-                <input type="button" value="Adicionar Sobremesa" class="btn btn-secondary btn-lg" id="AddSobremesa" name="AddSobremesa" />
+    <form method="post">
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-9">
+                <div class="text-right">
+                    <input type="submit" value="Finalizar" class="btn btn-secondary btn-lg" id="Finalizar" name="Finalizar" />
+                    <input type="button" value="Adicionar Bebida" class="btn btn-secondary btn-lg" id="AddBebida" name="AddBebida" />
+                    <input type="button" value="Adicionar Refeição" class="btn btn-secondary btn-lg" id="AddRefeicao" name="AddRefeicao" />
+                    <input type="button" value="Adicionar Sobremesa" class="btn btn-secondary btn-lg" id="AddSobremesa" name="AddSobremesa" />
+                </div>
             </div>
         </div>
-    </div>
+    </form>
 </body>
 
 @section scripts{
 
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 
     <script type="text/javascript">
 
-        $(document).ready(function (e) {
+        $(document).ready(function () {
 
             var table = $('#Nota').DataTable(
                 {
@@ -137,7 +137,7 @@
                 });
 
 
-            $("#AddBebida").click(function (e) {
+            $("#AddBebida").click(function () {
 
                 var selected = $("#BebidaID").find('option:selected');
 
@@ -147,14 +147,12 @@
 
                 // var total = selected.total("preco");
 
-
-
                 table.row.add([
                     id, nome, preco
                 ]).draw(false);
             });
 
-            $("#AddRefeicao").click(function (e) {
+            $("#AddRefeicao").click(function () {
 
                 var selected = $("#RefeicaoID").find('option:selected');
 
@@ -164,14 +162,12 @@
 
                 //var total = selected.total("preco");
 
-
-
                 table.row.add([
                     id, nome, preco
                 ]).draw(false);
             });
 
-            $("#AddSobremesa").click(function (e) {
+            $("#AddSobremesa").click(function () {
 
                 var selected = $("#SobremesaID").find('option:selected');
 
@@ -180,8 +176,6 @@
                 var preco = selected.data("preco");
 
                 //var total = selected.total("preco");
-
-
 
                 table.row.add([
                     id, nome, preco
@@ -205,4 +199,3 @@
     </script>
 
 }
-
