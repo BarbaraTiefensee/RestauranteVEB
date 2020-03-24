@@ -8,6 +8,8 @@
     <Compile Remove="Impl\EstoqueRepository - Copy.cs" />
     <Compile Remove="Migrations\20200319185158_Initial.cs" />
     <Compile Remove="Migrations\20200319185158_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20200319185244_InitialCommit.cs" />
+    <Compile Remove="Migrations\20200319185244_InitialCommit.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -10,7 +10,9 @@ namespace RestauranteVEB.Models
     public class PedidoViewModel
     {
         public string NomeNoPedido { get; set; }
-        public RefeicaoDTO Refeicao { get; set; }
-        public BebidaDTO Bebida { get; set; }
+        public double ValorTotal { get; set; }
+        public List<RefeicaoDTO> Refeicao { get; set; }
+        public List<BebidaDTO> Bebida { get; set; }
+        public List<SobremesaDTO> Sobremesa { get; set; }
     }
 }

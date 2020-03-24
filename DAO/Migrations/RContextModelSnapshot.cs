@@ -98,6 +98,10 @@ namespace DAO.Migrations
                         .HasMaxLength(50)
                         .IsUnicode(false);
 
+                    b.Property<double>("ValorTotal")
+                        .HasColumnType("float")
+                        .IsUnicode(false);
+
                     b.HasKey("ID");
 
                     b.ToTable("PEDIDOS");
@@ -279,7 +283,7 @@ namespace DAO.Migrations
             modelBuilder.Entity("DTO.PedidoSobremesa", b =>
                 {
                     b.HasOne("DTO.PedidoDTO", "Pedido")
-                        .WithMany()
+                        .WithMany("Sobremesas")
                         .HasForeignKey("PedidoID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

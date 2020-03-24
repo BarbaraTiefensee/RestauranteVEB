@@ -11,7 +11,9 @@ namespace RestauranteVEB.Models
     {
         public int ID { get; set; }
         public string NomeNoPedido { get; set; }
+        public double ValorTotal { get; set; }
         public RefeicaoDTO Refeicao { get; set; }
         public BebidaDTO Bebida { get; set; }
+        public SobremesaDTO Sobremesa { get; set; }
     }
 }
