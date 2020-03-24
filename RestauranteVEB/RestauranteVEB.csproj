@@ -7,12 +7,20 @@
   <ItemGroup>
     <Compile Remove="Content\**" />
     <Compile Remove="Views\Estoque\**" />
+    <Compile Remove="wwwroot\NewFolder1\**" />
+    <Compile Remove="wwwroot\NewFolder\**" />
     <Content Remove="Content\**" />
     <Content Remove="Views\Estoque\**" />
+    <Content Remove="wwwroot\NewFolder1\**" />
+    <Content Remove="wwwroot\NewFolder\**" />
     <EmbeddedResource Remove="Content\**" />
     <EmbeddedResource Remove="Views\Estoque\**" />
+    <EmbeddedResource Remove="wwwroot\NewFolder1\**" />
+    <EmbeddedResource Remove="wwwroot\NewFolder\**" />
     <None Remove="Content\**" />
     <None Remove="Views\Estoque\**" />
+    <None Remove="wwwroot\NewFolder1\**" />
+    <None Remove="wwwroot\NewFolder\**" />
   </ItemGroup>
 
   <ItemGroup>
