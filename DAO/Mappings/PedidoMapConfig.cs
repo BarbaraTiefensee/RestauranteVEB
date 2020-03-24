@@ -19,6 +19,8 @@ namespace DAO.Mappings
                 IsUnicode(false)
                 .HasMaxLength(50);
 
+            builder.Property(b => b.ValorTotal).IsRequired().IsUnicode(false);
+
             builder.HasMany(p => p.Refeicoes).WithOne(p => p.Pedido).HasForeignKey(p => p.RefeicaoID).OnDelete(DeleteBehavior.Restrict);
             builder.HasMany(p => p.Bebidas).WithOne(p => p.Pedido).HasForeignKey(p => p.BebidaID).OnDelete(DeleteBehavior.Restrict);
         }

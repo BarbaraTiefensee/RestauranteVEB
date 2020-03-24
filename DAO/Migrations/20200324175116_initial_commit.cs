@@ -2,7 +2,7 @@
 
 namespace DAO.Migrations
 {
-    public partial class InitialCommit : Migration
+    public partial class initial_commit : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -40,7 +40,8 @@ namespace DAO.Migrations
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    NomeNoPedido = table.Column<string>(unicode: false, maxLength: 50, nullable: false)
+                    NomeNoPedido = table.Column<string>(unicode: false, maxLength: 50, nullable: false),
+                    ValorTotal = table.Column<double>(unicode: false, nullable: false)
                 },
                 constraints: table =>
                 {

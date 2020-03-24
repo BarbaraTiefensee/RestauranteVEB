@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DAO.Migrations
 {
     [DbContext(typeof(RContext))]
-    [Migration("20200319185244_InitialCommit")]
-    partial class InitialCommit
+    [Migration("20200324175116_initial_commit")]
+    partial class initial_commit
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -98,6 +98,10 @@ namespace DAO.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(50)")
                         .HasMaxLength(50)
+                        .IsUnicode(false);
+
+                    b.Property<double>("ValorTotal")
+                        .HasColumnType("float")
                         .IsUnicode(false);
 
                     b.HasKey("ID");
@@ -281,7 +285,7 @@ namespace DAO.Migrations
             modelBuilder.Entity("DTO.PedidoSobremesa", b =>
                 {
                     b.HasOne("DTO.PedidoDTO", "Pedido")
-                        .WithMany()
+                        .WithMany("Sobremesas")
                         .HasForeignKey("PedidoID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

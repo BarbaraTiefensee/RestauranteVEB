@@ -10,7 +10,8 @@ namespace DTO
     {
         public int ID { get; set; }
         public string NomeNoPedido { get; set; }
-       
+        public double ValorTotal { get; set; }
+
         public virtual ICollection<PedidoRefeicao> Refeicoes { get; set; }
         public virtual ICollection<PedidoBebida> Bebidas { get; set; }
         public virtual ICollection<PedidoSobremesa> Sobremesas { get; set; }
